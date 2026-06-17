@@ -1,6 +1,35 @@
 ---
-format: html
+title: "Título de tu Investigación"
+author: "Bartaja y Cajamarca"
+format:
+  typst:
+    font: "Times New Roman"
+    fontsize: 12pt
 ---
+
+## 5.1 descargando api de clash
 ```{python}
-print('Hellow world')
+import requests
+
+API_TOKEN = 'CLASH_API'
+BASE_URL = 'https://api.clashroyale.com/v1'
+HEADERS = {
+    'Authorization': f'Bearer {API_TOKEN}',
+    'Accept': 'application/json'
+}
+
+def get_player_info(player_tag):
+    formatted_tag = player_tag.replace('#', '%23')
+    url = f"{BASE_URL}/players/{formatted_tag}"
+
+    response = requests.get(url, headers=HEADERS)
+
+    if response.status_code == 200:
+        return response.json()
+    else:
+        return f"Error: {response.status_code} - {response.text}"
+
+tag = "#8P8CLL2JL"
 ```
+
+como podermo observar la api de clashroyale nos da estos errores :v
