@@ -1,0 +1,124 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "lang: es\n",
+        "\n",
+        "format:\n",
+        "  pdf:\n",
+        "    documentclass: article\n",
+        "    fontsize: 12pt\n",
+        "    geometry:\n",
+        "      - margin=2.54cm\n",
+        "    colorlinks: true\n",
+        "    number-sections: true\n",
+        "---\n",
+        "\n",
+        "\\begin{center}\n",
+        "\n",
+        "{\\Large UNIVERSIDAD CENTRAL DEL ECUADOR}\n",
+        "\n",
+        "\\vspace{0.5cm}\n",
+        "\n",
+        "Facultad de Ingeniería y ciencias aplicadas\n",
+        "\n",
+        "Carrera de ingeniería y Ciencias de la Computación\n",
+        "\n",
+        "\\vspace{3cm}\n",
+        "\n",
+        "{\\Huge\\textbf{Prediccion del metajuego del clash royale usando IA}}\n",
+        "\n",
+        "\\vspace{2cm}\n",
+        "\n",
+        "Integrantes: Cajas Molina Robinson Stalin, Critian Paul Baraja Simbaña\n",
+        "\n",
+        "\\vspace{0.5cm}\n",
+        "\n",
+        "Docente: Nombre del Profesor\n",
+        "\n",
+        "\\vspace{0.5cm}\n",
+        "\n",
+        "Asignatura: Investigación Aplicada\n",
+        "\n",
+        "\\vfill\n",
+        "\n",
+        "Quito, Ecuador\n",
+        "\n",
+        "\\today\n",
+        "\n",
+        "\\end{center}\n",
+        "\n",
+        "\\newpage\n",
+        "\n",
+        "# Introducción\n",
+        "\n",
+        "Este es un documento de prueba.\n",
+        "\n",
+        "## Markdown\n",
+        "\n",
+        "Markdown es un formato fácil de leer y escribir.\n",
+        "\n",
+        "- Elemento 1\n",
+        "- Elemento 2\n",
+        "- Elemento 3\n",
+        "\n",
+        "## Código Python"
+      ],
+      "id": "29d87a91"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import os\n",
+        "os.cpu_count()"
+      ],
+      "id": "faad6f24",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Otro bloque"
+      ],
+      "id": "b90260a4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print(\"Hello, Quarto!\")"
+      ],
+      "id": "e3b8ebf2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Ecuación\n",
+        "\n",
+        "$$\n",
+        "\\chi' = \\sum_{i=1}^{n} k_i s_i^2\n",
+        "$$"
+      ],
+      "id": "438014ed"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "C:\\Users\\robin\\Documents\\programming\\INVESTIGATION\\invetigacion-aplicada-trabajo\\.venv\\share\\jupyter\\kernels\\python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

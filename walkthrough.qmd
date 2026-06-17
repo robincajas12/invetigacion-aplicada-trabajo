@@ -1,29 +1,106 @@
 ---
-title: "Hello, Quarto"
-format: html
+title: "Predicción del Metajuego de Clash Royale mediante Inteligencia Artificial"
+author:
+  - "Robinson Stalin Cajas Molina"
+  - "Cristian Paul Baraja Simbaña"
+date: today
+lang: es
+
+format:
+  pdf:
+    documentclass: report
+    fontsize: 12pt
+    geometry:
+      - margin=2.54cm
+    number-sections: true
+    colorlinks: true
+    toc: true
 ---
 
-## Markdown
+\begin{titlepage}
+\begin{center}
 
-Markdown is an easy to read and write text format:
+\vspace*{1cm}
 
-- It's _plain text_ so works well with version control
-- It can be **rendered** into HTML, PDF, and more
-- Learn more at: <https://quarto.org/docs/authoring/>
+{\Large\textbf{UNIVERSIDAD CENTRAL DEL ECUADOR}}
 
-## Code Cell
-uwu
-Here is a Python code cell:
+\vspace{0.5cm}
+
+{\large Facultad de Ingeniería y Ciencias Aplicadas}
+
+\vspace{0.3cm}
+
+{\large Carrera de Ingeniería en Ciencias de la Computación}
+
+\vspace{3cm}
+
+{\Huge\textbf{Predicción del Metajuego de Clash Royale mediante Inteligencia Artificial}}
+
+\vspace{2.5cm}
+
+\textbf{Integrantes}
+
+\vspace{0.3cm}
+
+Robinson Stalin Cajas Molina
+
+Cristian Paul Baraja Simbaña
+
+\vspace{1cm}
+
+\textbf{Asignatura}
+
+Investigación Aplicada
+
+\vspace{1cm}
+
+\textbf{Docente}
+
+Nombre del docente
+
+\vfill
+
+Quito, Ecuador
+
+2026
+
+\end{center}
+\end{titlepage}
+
+# Introducción
+
+La evolución constante del metajuego en Clash Royale influye directamente en la selección de cartas, mazos y estrategias utilizadas por los jugadores. Debido a los cambios de balance introducidos periódicamente por los desarrolladores, resulta relevante analizar si es posible anticipar tendencias futuras mediante técnicas de inteligencia artificial.
+
+# Objetivos
+
+## Objetivo general
+
+Desarrollar un modelo de inteligencia artificial capaz de predecir tendencias del metajuego de Clash Royale a partir de datos históricos.
+
+## Objetivos específicos
+
+- Recopilar datos de partidas competitivas.
+- Analizar patrones de uso de cartas y mazos.
+- Entrenar modelos predictivos.
+- Evaluar el rendimiento de las predicciones obtenidas.
+
+# Metodología
+
+Describir aquí la fuente de datos, el proceso de limpieza y los algoritmos empleados.
+
+# Resultados
+
+Presentar tablas, gráficos y métricas obtenidas.
 
 ```{python}
 import os
-os.cpu_count()
+print(f"Núcleos de CPU: {os.cpu_count()}")
 ```
 
-## Equation
+# Conclusiones
 
-Use LaTeX to write equations:
+Presentar las conclusiones finales del estudio.
 
-$$
-\chi' = \sum_{i=1}^n k_i s_i^2
-$$
+# Referencias
+
+Agregar las referencias bibliográficas utilizadas.
