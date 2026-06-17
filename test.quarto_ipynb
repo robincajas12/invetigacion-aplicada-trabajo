@@ -1,0 +1,47 @@
+{
+  "cells": [
+    {
+      "cell_type": "raw",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Título de tu Investigación\"\n",
+        "author: \"Tu Nombre\"\n",
+        "format:\n",
+        "  typst:\n",
+        "    font: \"Times New Roman\"\n",
+        "    fontsize: 12pt\n",
+        "---"
+      ],
+      "id": "3cf9c425"
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## 5.1 descargando api de clash"
+      ],
+      "id": "4cc80b27"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "print('Hellow world')"
+      ],
+      "id": "26c6a780",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/home/codespace/.local/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
