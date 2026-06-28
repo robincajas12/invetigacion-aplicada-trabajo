@@ -5,7 +5,6 @@ author:
   - "Baraja Simbaña Cristian Paul"
 date: today
 lang: es
-
 format:
   pdf:
     documentclass: report
@@ -42,7 +41,12 @@ execute:
 
 {{< include chapters/_resultados_avanzados.qmd >}}
 
+{{< include chapters/_seleccion_modelos.qmd >}}
+
+{{< include chapters/_proceso_experimental.qmd >}}
+
+{{< include chapters/_evaluacion.qmd >}}
+
+{{< include chapters/_seleccion_final.qmd >}}
+
 {{< include chapters/_conclusiones.qmd >}}
-
-
-

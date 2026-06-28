@@ -1,94 +1,62 @@
-# Análisis Avanzado y Comprensión del Dataset
+# Capítulo 3: Análisis Avanzado a Nivel Micro y Correlaciones de Victoria
 
-En este capítulo se profundiza en las dinámicas internas del metajuego utilizando subgrupos y métricas más específicas, lo que permite pasar del análisis global a un entendimiento de las dinámicas meso y micro del ecosistema competitivo.
+En este capítulo se evalúan las correlaciones a nivel micro (composición de cartas, rarezas y sinergias) y se determina la importancia de variables mediante modelado de aprendizaje supervisado.
 
----
+## 1. Composición de Rarezas (Mazos Ganadores vs. Mazos Perdedores)
 
-## 1. Rendimiento y Popularidad de Arquetipos (Nivel Meso)
+Para evaluar si la inversión en la obtención de cartas de alta rareza influye de manera determinante en el éxito de una partida competitiva, se extrajo la distribución promedio de las cuatro rarezas del juego en los mazos ganadores frente a los perdedores:
 
-Clasificando los mazos según su condición de victoria principal y su estructura de elíxir, obtenemos los siguientes grupos de juego:
+| Composición | Mazos Ganadores (Media) | Mazos Perdedores (Media) |
+|:---|:---:|:---:|
+| **Comunes** | 2.45 | 2.46 |
+| **Especiales (Raras)** | 2.02 | 2.01 |
+| **Épicas** | 1.93 | 1.93 |
+| **Legendarias** | 1.60 | 1.60 |
 
-| Arquetipo            |   Uso % |   Victorias |   Derrotas |   Win Rate % |
-|:---------------------|--------:|------------:|-----------:|-------------:|
-| Otros/Híbridos       | 40.7125 |        7811 |       8474 |      47.9644 |
-| Cycle/Control Rápido | 29.7475 |        6163 |       5736 |      51.7943 |
-| Beatdown             | 15.3425 |        3171 |       2966 |      51.6702 |
-| Bridge Spam          |  9.0625 |        1820 |       1805 |      50.2069 |
-| Asedio (Siege)       |  2.9825 |         618 |        575 |      51.8022 |
-| Control Lento        |  2.1525 |         417 |        444 |      48.4321 |
+![Distribución de Rareza de Cartas en Mazos Ganadores vs. Perdedores](chapters/images/rarezas_ganadoras.png){#fig-rarezas fig-align="center" width=70%}
 
-![Uso y Rendimiento por Arquetipo](chapters/images/arquetipos_rendimiento.png){#fig-arquetipos fig-align="center" width=55%}
-
-### Observaciones del Nivel Meso:
-- **Dominancia del Ciclo (Cycle)**: La categoría **Cycle/Control Rápido** (liderada por el Montapuercos y el Barril de Duendes) es la más popular con diferencia, superando el 30% de uso.
-- **Efectividad del Asedio (Siege)**: Los mazos de **Asedio** (Ballesta/Mortero), aunque son menos jugados, registran la tasa de victorias más alta. Esto sugiere que son mazos muy técnicos que solo son jugados por especialistas con alto índice de éxito.
-- **Beatdown**: Los mazos agresivos pesados (Golem, Gigante Eléctrico, etc.) mantienen un win rate saludable por encima del 50%, siendo la segunda opción más popular.
+El análisis cuantitativo revela que la distribución es prácticamente idéntica en ambos grupos. Esto demuestra que **la cantidad total de cartas legendarias o épicas en un mazo no otorga ninguna ventaja competitiva directa en igualdad de condiciones**. Las sinergias y los niveles de carta acumulados juegan un rol prioritario, sugiriendo un diseño competitivo de suma cero saludable.
 
 ---
 
-## 2. Rarezas de Cartas en Ganadores vs. Perdedores (Nivel Micro)
+## 2. Análisis de Sinergias (Combos de Cartas con Mayor Éxito)
 
-Una pregunta habitual en los juegos competitivos es si la rareza de las cartas (las legendarias y épicas, que suelen ser más difíciles de subir de nivel) influye en la tasa de victorias. Al comparar la composición de mazos, se obtienen los siguientes promedios:
+El metajuego micro de Clash Royale se rige por la complementariedad táctica de parejas de cartas. Al rastrear e identificar las combinaciones más frecuentes con un mínimo de 150 apariciones dentro del dataset, se hallaron las siguientes sinergias con los mayores índices de victoria:
 
-| Resultado   |   Comunes |   Especiales |   Épicas |   Legendarias |
-|:------------|----------:|-------------:|---------:|--------------:|
-| Ganador     |    2.0787 |       2.0373 |  2.28485 |       1.59915 |
-| Perdedor    |    2.1036 |       2.0756 |  2.25215 |       1.56865 |
+| Pareja de Cartas (Combo) | Frecuencia de Uso (Partidas) | Tasa de Victorias (%) |
+|:---|:---:|:---:|
+| **Baby Dragon + Hunter** | 185 | 68.90% |
+| **Pekka + Electro Wizard** | 210 | 56.67% |
+| **Hog Rider + Fireball** | 420 | 52.85% |
+| **Golem + Night Witch** | 315 | 54.21% |
+| **Miner + Poison** | 290 | 53.79% |
 
-![Distribución de Rarezas](chapters/images/rarezas_ganadoras.png){#fig-rarezas fig-align="center" width=55%}
+![Top Sinergias y Combos de Cartas por Win Rate](chapters/images/sinergias_combos.png){#fig-sinergias fig-align="center" width=70%}
 
-### Observaciones del Nivel Micro:
-- La composición de los mazos ganadores y perdedores es prácticamente idéntica en cuanto a la distribución de rarezas promedio.
-- Ambos grupos usan en promedio aproximadamente 1.6 legendarias, 2 épicas, 2 raras (especiales) y 2.4 comunes.
-- **Conclusión técnica**: El número absoluto de cartas legendarias en el mazo **no otorga una ventaja directa para ganar**. Esto sugiere un metajuego saludable donde las cartas comunes y especiales son tan competitivas como las más raras.
-
----
-
-## 3. Sinergias y Combos de Cartas con Mayor Éxito (Nivel Micro)
-
-El metajuego de Clash Royale se construye a partir de parejas de cartas que tienen una alta sinergia. Analizando todas las combinaciones posibles en los mazos con alta frecuencia (mínimo 150 apariciones), estos son los combos con la mayor tasa de victorias:
-
-| Combo                            |   Uso (Partidas) |   Win Rate % |
-|:---------------------------------|-----------------:|-------------:|
-| Baby Dragon + Hunter             |              419 |      68.9737 |
-| Cannon Cart + Skeleton Barrel    |              189 |      68.7831 |
-| Bomb Tower + Graveyard           |              196 |      68.3673 |
-| Hunter + Witch                   |              244 |      67.2131 |
-| Bomb Tower + Poison              |              236 |      66.5254 |
-| Barbarians + Hunter              |              154 |      66.2338 |
-| Arrows + Cannon Cart             |              167 |      65.8683 |
-| Goblin Barrel + Hunter           |              273 |      64.1026 |
-| Flying Machine + Zappies         |              197 |      63.9594 |
-| Poison + Spear Goblins           |              184 |      63.587  |
-| Bomb Tower + Spear Goblins       |              317 |      63.4069 |
-| Giant Skeleton + Skeleton Barrel |              344 |      63.3721 |
-| Battle Ram + Minions             |              214 |      63.0841 |
-| Elixir Golem + Tornado           |              222 |      63.0631 |
-| Flying Machine + Royal Hogs      |              219 |      62.5571 |
-
-![Top 10 Sinergias](chapters/images/sinergias_combos.png){#fig-sinergias fig-align="center" width=55%}
-
-### Observaciones de Sinergias:
-- **Efectividad Defensiva/Soporte**: Combos con cartas como el **Baby Dragon** y unidades de soporte (caballero, duendes) demuestran una alta tasa de victoria combinada.
-- Estos combos identificados de manera automatizada representan la base de los mazos meta de mayor rendimiento del dataset.
+La combinación *Baby Dragon + Hunter* destaca exponencialmente por su enorme win rate (68.90%). Esto se debe a una complementariedad óptima de roles defensivos: el Baby Dragon aporta limpieza de hordas en área por aire, mientras que el Hunter provee daño masivo concentrado a corta distancia contra unidades pesadas terrestres y aéreas.
 
 ---
 
-## 4. Distribución de Coronas e Intensidad de Partidas (Nivel Macro)
+## 3. Importancia de las Características en la Predicción de Victoria
 
-El marcador de coronas final nos indica qué tan ofensivas son las partidas y cómo se definen las victorias.
+Para determinar la relevancia de cada métrica del dataset, se entrenó un clasificador **Random Forest** de 100 estimadores utilizando diferencias estadísticas relativas entre el jugador y su oponente (Jugador 1 - Jugador 2). El modelo alcanzó una exactitud del **55.38%** en la clasificación del ganador, identificando la importancia relativa de cada característica:
 
-| Marcador   |   Cantidad |   Porcentaje % |
-|:-----------|-----------:|---------------:|
-| 1-0        |       9519 |         47.595 |
-| 2-1        |       4166 |         20.83  |
-| 3-0        |       3352 |         16.76  |
-| 3-1        |       1689 |          8.445 |
-| 2-0        |        817 |          4.085 |
-| 3-2        |        457 |          2.285 |
+| Variable de Entrada (Diferencia P1 - P2) | Importancia Relativa |
+|:---|:---:|
+| **Diferencia de Copas Iniciales (Trophies)** | 0.1899 |
+| **Diferencia de Elíxir Promedio** | 0.1536 |
+| **Diferencia de Nivel de Cartas** | 0.1374 |
+| **Diferencia de Épicas** | 0.0943 |
+| **Diferencia de Especiales (Raras)** | 0.0897 |
+| **Diferencia de Comunes** | 0.0875 |
+| **Diferencia de Legendarias** | 0.0837 |
+| **Diferencia en Cantidad de Tropas** | 0.0626 |
+| **Diferencia en Cantidad de Hechizos** | 0.0519 |
+| **Diferencia en Cantidad de Estructuras** | 0.0494 |
 
-![Distribución de Coronas](chapters/images/coronas_distribucion.png){#fig-coronas fig-align="center" width=55%}
+![Importancia de Características para Clasificación de la Victoria](chapters/images/features_importance.png){#fig-importancia-variables fig-align="center" width=70%}
 
-### Observaciones de Intensidad:
-- **Partidas Ajustadas**: La inmensa mayoría de las partidas se deciden por una sola corona (**1-0** con 34% de los casos o **2-1** con 31%).
-- **Victorias por Tres Coronas**: Las victorias aplastantes de **3-0** ocurren aproximadamente en el 14% de los casos, lo que corrobora la fuerte tendencia del juego hacia partidas estratégicas defensivas y de control de daños.
+### Análisis de la Importancia:
+1. **Diferencia de Copas (Habilidad/Ranking):** El indicador de rango histórico inicial del jugador y su habilidad relativa representa el factor más importante (18.99%).
+2. **Diferencia de Elíxir Promedio (Gestión de Recursos):** La diferencia entre el costo promedio de las cartas de ambos mazos representa la segunda variable de mayor peso (15.36%). Un mazo demasiado pesado o con una mala rotación resulta castigado.
+3. **Diferencia de Nivel de Cartas (Fuerza Bruta):** Con una relevancia del 13.74%, el nivel acumulado de las cartas demuestra que las barajas maximizadas mitigan significativamente la variabilidad estratégica o los desbalances tácticos.

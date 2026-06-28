@@ -1,71 +1,45 @@
-# Capítulo 1: Introducción e información general
+# Capítulo 1: Análisis del Problema y Justificación del Sistema Predictivo
 
-## Justificación del Proyecto
+## 1. Justificación del Proyecto
 
-La presente investigación es necesaria porque el metajuego de Clash Royale es un fenómeno de alta complejidad que resulta imposible de predecir o entender a simple vista, ya que cambia constantemente debido a los parches de balance mensuales y la adición de nuevas mecánicas como las evoluciones. Al ser un sistema dinámico donde millones de jugadores adoptan estrategias de forma masiva, la única manera real de anticipar el comportamiento del juego es mediante la recolección y procesamiento de un volumen masivo de datos directamente desde la API oficial de Supercell.
+El metajuego (o "meta") de Clash Royale es un fenómeno de alta complejidad y dinamismo que no se puede modelar de forma trivial mediante reglas fijas o intuición simple. Este sistema competitivo cambia constantemente debido a dos factores primordiales:
 
-### Justificación Teórica.
-El proyecto aporta valor teórico al aplicar conceptos de ciencias de la computación para desarmar un ecosistema competitivo complejo. Esto permite estudiar cómo las modificaciones en variables individuales (atributos de las cartas) alteran el equilibrio general de un sistema dinámico, sirviendo como un caso de estudio real sobre el comportamiento de redes de datos interconectadas.
+* **Parches de Balance Mensuales:** Modificaciones directas introducidas por el desarrollador (Supercell) que alteran los atributos clave de las cartas (puntos de vida, daño, velocidad de ataque, coste de elíxir o mecánicas especiales).
+* **Adopción Social y Evoluciones:** La comunidad de jugadores reacciona de manera coordinada pero descentralizada, propagando rápidamente mazos dominantes tras el descubrimiento de sinergias óptimas o el lanzamiento de "cartas evolucionadas".
 
-### Justificación Práctica.
-La utilidad real de este modelo de inteligencia artificial radica en su capacidad de resolver el problema de la incertidumbre en el entorno competitivo, permitiendo predecir con exactitud qué combinaciones y arquetipos dominarán el juego ante futuros parches de balance, ofreciendo una herramienta estratégica aplicable tanto al análisis de videojuegos como a la simulación de escenarios dinámicos.
+Al ser un sistema dinámico multivariante de gran escala, anticipar qué combinaciones y arquetipos reinarán ante un cambio de balance es un problema de gran relevancia científica para la simulación de economías de juego y la teoría de juegos evolutiva. La única vía metodológica rigurosa para abordar este problema es la minería de datos históricos masivos recopilados directamente desde la API oficial de Supercell.
 
-## Objetivos del Proyecto
+### Justificación Teórica
 
-### Objetivo General.
-Desarrollar un modelo de inteligencia artificial capaz de predecir tendencias del metajuego de Clash Royale mediante el análisis de datos históricos comprendidos entre 2023 y 2026.
+Desde una perspectiva teórica de la Inteligencia Artificial y la Ciencia de Datos, este proyecto permite investigar cómo las modificaciones en variables discretas locales (los atributos individuales de una carta) alteran el equilibrio general de un sistema competitivo interconectado. Sirve como un caso de estudio real sobre el comportamiento de series temporales dinámicas no lineales de alta frecuencia, donde las transiciones de fase (cambios abruptos en las tasas de uso) son inducidas por perturbaciones externas controladas (parches de balance).
 
-### Objetivos Específicos.
-A continuación se detallan las metas a cumplir:
+### Justificación Práctica
 
-* Recolectar y procesar datos relacionados con el rendimiento, popularidad y uso de cartas y mazos en Clash Royale durante el período 2023-2026.
-* Analizar patrones temporales y variaciones del metajuego utilizando técnicas de IA.
-* Entrenar y evaluar modelos de inteligencia artificial para predecir cambios y tendencias futuras en el metajuego de Clash Royale.
-* Comparar el rendimiento de distintos modelos predictivos mediante métricas de precisión y exactitud.
-* Identificar los factores que más influyen en la evolución del metajuego, como balance de cartas, frecuencia de uso y efectividad de arquetipos.
+En el ámbito práctico, el sistema de IA diseñado mitiga la incertidumbre estratégica en los ecosistemas de deportes electrónicos (*eSports*). Permite a los analistas, entrenadores y jugadores profesionales simular y predecir con exactitud científica las tendencias del metajuego antes de que se jueguen torneos cruciales, optimizando la asignación de recursos de entrenamiento y la preparación de contra-estrategias adaptadas a la composición del meta venidero.
 
-## Hipótesis
+---
 
-El análisis de datos históricos mediante modelos de inteligencia artificial permite predecir con precisión los cambios y tendencias futuras en el metajuego de Clash Royale tras la aplicación de parches de balance.
+## 2. Naturaleza del Metajuego y Estructura del Problema
 
-## Metodología
+Para diseñar una IA predictiva eficaz, es indispensable formalizar la naturaleza y variables del problema en Clash Royale:
 
-### Tipo y Diseño.
-* **Tipo:** Aplicado y analítico. Se descompone el metajuego en partes para entenderlo.
-* **Diseño:** No experimental y longitudinal (2023-2026). No se altera el juego, solo se observa y analiza cómo evoluciona el meta a lo largo del tiempo.
+### Variables Temporales
+El metajuego de Clash Royale opera en múltiples escalas temporales:
+1. **Escala Macro (Mensual/Temporada):** Cada temporada (generalmente de 28 a 35 días) inicia con la aplicación de parches de balance y eventos competitivos que redefinen la viabilidad de las barajas.
+2. **Escala Meso (Semanal):** Fluctuaciones menores debidas al descubrimiento y masificación de mazos de contra-estrategia (*counter-decks*) diseñados específicamente para derrotar a los mazos más populares de los primeros días de la temporada.
+3. **Escala Micro (Partidas en Tiempo Real):** Secuencias de emparejamiento (*matchmaking*) de alta resolución.
 
-### Variables.
-* **Variable Dependiente (Lo que se quiere predecir):** El metajuego de Clash Royale (analizado a nivel global, por mazos y por cartas individuales).
-* **Variable Independiente (La herramienta utilizada):** Modelos de IA para series temporales (específicamente LSTM y Random Forest).
+### Influencia de los Parches de Balance
+Los parches de balance actúan como fuerzas exógenas de perturbación en el sistema físico-matemático del metajuego. Un cambio de tan solo un 4% en la velocidad de ataque de una carta de soporte (por ejemplo, el *Baby Dragon* o el *Hunter*) puede desplazar su tasa de victoria por debajo del umbral de viabilidad del 50%, provocando un colapso en cascada de todos los mazos que dependían de su cobertura defensiva.
 
-### Población y Muestra.
-* **Población:** Todas las partidas y datos globales de Clash Royale.
-* **Muestra:** Los datos de rendimiento, uso y efectividad de cartas/mazos recolectados de la API oficial entre 2023 y 2026.
+### Evolución de Cartas y Arquetipos
+Un mazo en Clash Royale consta exactamente de 8 cartas de una biblioteca de más de 115 opciones. Clasificar de forma aislada cada posible combinación de 8 cartas resulta en un problema combinatorio inmanejable de:
 
-### Tipo de Investigación.
-Para esta investigación se eligió el método analítico, y la razón es bastante clara: el metajuego de Clash Royale es un fenómeno complejo que no se puede medir de forma directa. Está compuesto por muchas variables que se influyen entre sí, así que para entenderlo y predecirlo hay que ir por partes, descomponiendo el problema en sus elementos más básicos y estudiando cada uno por separado.
+$$\binom{115}{8} \approx 2.45 \times 10^{11} \text{ combinaciones posibles}$$
 
-El proceso se desarrolla en cuatro etapas concretas:
-
-1. **Observación y descripción:** Todo empieza por recopilar los datos históricos del período 2023-2026, limpiarlos y organizarlos. En esta etapa se definen las variables clave que se van a analizar, como las tasas de victoria y de uso de las cartas, y se identifican los parches de balance y los arquetipos más frecuentes.
-2. **Descomposición y análisis de las partes:** Aquí se entra en detalle. Se separan los distintos factores que influyen en el ecosistema competitivo, como los parches, las temporadas y los arquetipos específicos, para examinar de cerca cómo evoluciona cada uno en términos de uso, rendimiento y tendencias a lo largo del tiempo.
-3. **Identificación de relaciones:** En esta fase se busca entender qué está conectado con qué. Se analiza, por ejemplo, si los cambios de balance en las cartas realmente afectan su nivel de uso, y qué tanto influyen las sinergias entre cartas en el desempeño de un mazo.
-4. **Síntesis y conclusiones:** Finalmente, se integra todo lo aprendido entrenando y evaluando dos modelos de inteligencia artificial, LSTM y Random Forest, para comparar cuál predice mejor las tendencias del metajuego y así construir un sistema predictivo sólido.
-
-## Red de inclusores gráficos
-
-Esta red de inclusores gráficos integra múltiples niveles de granularidad, desde la visión global de la comunidad hasta los detalles técnicos del aprendizaje automático, permitiendo una comprensión profunda de las dinámicas del juego.
-
-### Variable Dependiente: Metajuego de Clash Royale.
-El análisis abarca tres niveles estructurales:
-
-* **Nivel macro:** Examina el *Estado Global del Metajuego* mediante la evolución histórica y tasas de uso y victoria.
-* **Nivel meso:** Se enfoca en el *Rendimiento y Popularidad* del mazo o arquetipos tras los cambios de balance.
-* **Nivel micro:** Detalla el *Comportamiento de cartas individuales* (uso y efectividad dentro del Mazo) y sus sinergias.
-
-### Variable Independiente: Modelos de Inteligencia Artificial.
-El sistema predictivo se evalúa de forma progresiva:
-
-* **Nivel macro:** Define la *IA enfocada a la predicción* mediante su arquitectura y flujo de datos.
-* **Nivel meso:** Analiza el rendimiento mediante *Series temporales* (líneas de tiempo) comparando los modelos LSTM y Random Forest.
-* **Nivel micro:** Se concentra en la *calibración de los hiperparámetros*, análisis de residuos y sobreajuste.
+Por ello, el metajuego se descompone en **Arquetipos** definidos por su condición de victoria (*wincon*) y velocidad de ciclo de elíxir:
+* **Beatdown:** Mazos ofensivos pesados basados en acumular tropas detrás de tanques lentos (Golem, Gigante, Sabueso de Lava).
+* **Cycle/Control Rápido:** Mazos de rotación ágil y bajo costo promedio (Hog Rider, Barril de Duendes, Minero) enfocados en desgastar la torre enemiga y mantener una defensa matemática sumamente optimizada.
+* **Asedio (Siege):** Mazos que colocan estructuras ofensivas en el puente (Ballesta, Mortero) para atacar desde su propio campo.
+* **Bridge Spam:** Mazos enfocados en la presión constante en el puente con unidades veloces e independientes (Ariete de batalla, Montacarneros) para castigar el gasto ineficiente de elíxir del rival.
+* **Control Lento:** Estructuras defensivas robustas con daño letal concentrado y contraataques quirúrgicos (Cementerio, Trío de Mosqueteras).

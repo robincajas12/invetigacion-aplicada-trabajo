@@ -257,7 +257,7 @@ Clasificando los mazos según su condición de victoria principal y su estructur
 
 {arquetypes_df.to_markdown(index=False)}
 
-![Uso y Rendimiento por Arquetipo](chapters/images/arquetipos_rendimiento.png){{#fig-arquetipos fig-align="center" width=55%}}
+![Uso y Rendimiento por Arquetipo](chapters/images/arquetipos_rendimiento.png){'{#fig-arquetipos fig-align="center" width=55%}'}
 
 ### Observaciones del Nivel Meso:
 - **Dominancia del Ciclo (Cycle)**: La categoría **Cycle/Control Rápido** (liderada por el Montapuercos y el Barril de Duendes) es la más popular con diferencia, superando el 30% de uso.
@@ -272,7 +272,7 @@ Una pregunta habitual en los juegos competitivos es si la rareza de las cartas (
 
 {rarity_summary.to_markdown(index=False)}
 
-![Distribución de Rarezas](chapters/images/rarezas_ganadoras.png){{#fig-rarezas fig-align="center" width=55%}}
+![Distribución de Rarezas](chapters/images/rarezas_ganadoras.png){'{#fig-rarezas fig-align="center" width=55%}'}
 
 ### Observaciones del Nivel Micro:
 - La composición de los mazos ganadores y perdedores es prácticamente idéntica en cuanto a la distribución de rarezas promedio.
@@ -287,7 +287,7 @@ El metajuego de Clash Royale se construye a partir de parejas de cartas que tien
 
 {combos_df.to_markdown(index=False)}
 
-![Top 10 Sinergias](chapters/images/sinergias_combos.png){{#fig-sinergias fig-align="center" width=55%}}
+![Top 10 Sinergias](chapters/images/sinergias_combos.png){'{#fig-sinergias fig-align="center" width=55%}'}
 
 ### Observaciones de Sinergias:
 - **Efectividad Defensiva/Soporte**: Combos con cartas como el **Baby Dragon** y unidades de soporte (caballero, duendes) demuestran una alta tasa de victoria combinada.
@@ -301,7 +301,7 @@ El marcador de coronas final nos indica qué tan ofensivas son las partidas y c�
 
 {crown_df.head(10).to_markdown(index=False)}
 
-![Distribución de Coronas](chapters/images/coronas_distribucion.png){{#fig-coronas fig-align="center" width=55%}}
+![Distribución de Coronas](chapters/images/coronas_distribucion.png){'{#fig-coronas fig-align="center" width=55%}'}
 
 ### Observaciones de Intensidad:
 - **Partidas Ajustadas**: La inmensa mayoría de las partidas se deciden por una sola corona (**1-0** con 34% de los casos o **2-1** con 31%).

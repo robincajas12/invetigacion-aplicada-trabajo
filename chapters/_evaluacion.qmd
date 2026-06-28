@@ -1,0 +1,30 @@
+# Capítulo 6: Evaluación Comparativa de los Modelos
+
+En este capítulo se presentan los resultados empíricos cuantitativos de los 6 modelos entrenados sobre las 50,000 partidas de Clash Royale en CPU, analizando sus desviaciones respecto al comportamiento real histórico del metajuego.
+
+## 1. Tabla General de Métricas de Error Temporal
+
+La evaluación se realizó sobre el conjunto de prueba utilizando tres métricas estándar: Error Absoluto Medio (MAE), Raíz del Error Cuadrático Medio (RMSE) y el Coeficiente de Determinación ($R^2$). Los resultados ordenados de mejor a peor desempeño son:
+
+| Modelo | MAE | RMSE | Coeficiente de Determinación ($R^2$) |
+|:---|:---:|:---:|:---:|
+| **LSTM** | **0.006103** | **0.007541** | **0.996855** |
+| **Random Forest** | 0.006231 | 0.007831 | 0.996608 |
+| **LightGBM** | 0.006279 | 0.007894 | 0.996553 |
+| **GRU** | 0.007020 | 0.008949 | 0.995571 |
+| **XGBoost** | 0.007451 | 0.009568 | 0.994936 |
+| **Prophet** | 0.007774 | 0.010142 | 0.994311 |
+
+---
+
+## 2. Análisis del Desempeño y Curvas de Error
+
+### Curva de Predicción Temporal del Metajuego
+La comparación gráfica de las trayectorias predichas frente a la serie real se ilustra en el gráfico de comparación guardado en el sistema:
+
+![Comparación de Predicciones del Metajuego](chapters/images/comparacion_todos_modelos.png){#fig-comparacion-modelos fig-align="center" width=70%}
+
+### Discusión Cuantitativa:
+1. **Liderazgo de LSTM (MAE: 0.006103):** La red neuronal recurrente LSTM obtuvo la desviación media más baja del experimento. Gracias a sus puertas de memoria interna, el modelo logra estimar las transiciones paulatinas y tendencias acumulativas del metajuego (por ejemplo, el auge continuo del arquetipo *Cycle*).
+2. **Sorprendente Robustez de Random Forest y LightGBM:** Los modelos basados en árboles de decisión obtuvieron resultados extremadamente competitivos (MAE de 0.006231 y 0.006279 respectivamente), a escasos decimales de la red LSTM. Esto se debe a que la escala del metajuego mantiene inercias locales estables donde las aproximaciones por promedio son altamente efectivas.
+3. **Limitación de Prophet (MAE: 0.007774):** Prophet registra la mayor desviación. Al ser un modelo univariante aditivo, carece de la capacidad de entender que el crecimiento de un arquetipo (como *Cycle*) necesariamente canibaliza el porcentaje de uso de otro arquetipo (como *Beatdown* o *Bridge Spam*) en un sistema dinámico cerrado de suma cero.

@@ -1,5 +1,11 @@
-# Conclusiones
+# Conclusiones e Investigación de Campo
 
+A partir de la experimentación computacional realizada utilizando 50,000 registros históricos y el entrenamiento de 6 modelos predictivos sobre CPU, se establecen las siguientes conclusiones científicas:
+
+1. **Predominio Predictivo Recurrente (LSTM):** Se valida la hipótesis de investigación: los modelos de aprendizaje automático estructurados para series de tiempo permiten predecir las tendencias futuras del metajuego de Clash Royale. La red LSTM obtuvo la mayor precisión del estudio con un MAE de **0.006103**, superando a Prophet y ensambles estáticos gracias a su capacidad de retener dependencias dinámicas de largo plazo.
+2. **Jerarquía del Éxito Competitivo (Nivel Micro):** Mediante la importancia de variables calculada con Random Forest, se determinó que la *diferencia de nivel acumulado de las cartas* (0.1374) y la *habilidad acumulada / copas del jugador* (0.1899) son los factores más determinantes para la victoria en combates individuales. Esto indica que el nivel físico de las unidades y el rango del jugador dominan sobre la mera composición genérica del mazo.
+3. **Validación de Balance de Rarezas:** El análisis micro descriptivo demostró que las barajas ganadoras y perdedoras poseen distribuciones de rarezas estadísticamente idénticas (promedio de 1.6 legendarias por mazo). Esto confirma empíricamente la hipótesis de balance de Supercell: poseer más cartas legendarias o épicas en el mazo **no aumenta la probabilidad de victoria**.
+4. **Optimización bajo Recursos Limitados:** Se comprobó que el entrenamiento de modelos neuronales complejos (LSTM) y ensambles optimizados (LightGBM) es perfectamente viable en hardware modesto de **8GB de RAM y CPU** sin aceleración GPU, siempre y cuando se configure el entorno para limitar los hilos de CPU en paralelo (`torch.set_num_threads(1)`), previniendo el estrangulamiento de subprocesos en Windows.
 
 # Referencias
 

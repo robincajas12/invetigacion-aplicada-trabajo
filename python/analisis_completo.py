@@ -266,7 +266,7 @@ Las condiciones de victoria (Wincons) son las cartas clave diseñadas para infli
 
 {wincon_df.head(15).to_markdown(index=False)}
 
-![Uso vs. Win Rate de Condiciones de Victoria](chapters/images/win_rates.png){{#fig-win-rates fig-align="center" width=55%}}
+![Uso vs. Win Rate de Condiciones de Victoria](chapters/images/win_rates.png){'{#fig-win-rates fig-align="center" width=55%}'}
 
 ### Observaciones Clave:
 - **Popularidad:** Algunas condiciones de victoria tienen una tasa de uso dominante en el metajuego.
@@ -282,7 +282,7 @@ El modelo alcanzó una precisión del **{acc*100:.2f}%** en el conjunto de prueb
 
 {feat_imp_df.to_markdown(index=False)}
 
-![Importancia de Características](chapters/images/features_importance.png){{#fig-feature-importance fig-align="center" width=55%}}
+![Importancia de Características](chapters/images/features_importance.png){'{#fig-feature-importance fig-align="center" width=55%}'}
 
 
 ### Interpretación de Resultados:
