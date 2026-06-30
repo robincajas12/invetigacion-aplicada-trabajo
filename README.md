@@ -4,14 +4,14 @@ python
 quarto: https://quarto.org/docs/get-started/
 
 agregar una variable de ambiente llamada
-correr este comando
-en terminal
 QUARTO_PYTHON y la "RUTA DE DONDE ESTA ISNTALADO PYTHON"
 emjemplo
 QUARTO_PYTHON
 "C:\Users\robin\AppData\Local\Python\bin\python.exe"                                                                                                                                                      
 
+correr este comando en terminal
 python -m venv .venv
+
 .\.venv\Scripts\Activate.ps1 
 pip install nbformat jupyter
 quarto install tinytex                
