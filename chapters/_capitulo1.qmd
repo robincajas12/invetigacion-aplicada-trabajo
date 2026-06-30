@@ -58,3 +58,34 @@ Para reducir la complejidad combinatoria, los mazos se agrupan en arquetipos:
 | Híbridos | Mazos que combinan varias condiciones de victoria o no encajan en una sola categoría |
 
 Esta clasificación permite transformar millones de combinaciones posibles en grupos interpretables para el análisis predictivo.
+
+## 1.8 Marco Teórico
+
+El presente marco teórico fundamenta los constructos conceptuales, estadísticos y computacionales que sustentan la investigación, integrando disciplinas como la **Teoría de Juegos**, la **Ciencia de Datos** y el **Aprendizaje Automático**.
+
+### Teoría de Juegos y Decisiones Estratégicas
+La **Teoría de Juegos** se define como el análisis riguroso y sistemático de situaciones de conflicto y cooperación en las que interactúan individuos racionales [@cerda2004teoria]. En estos escenarios, cada jugador busca maximizar su **función de utilidad**, pero el resultado final no depende únicamente de sus propias acciones, sino de las decisiones tomadas por los demás participantes [@cerda2004teoria]. 
+
+Un concepto central es el **Equilibrio de Nash**, un perfil de estrategias en el cual la elección de cada jugador es una respuesta óptima a las estrategias del resto; de este modo, ningún individuo tiene incentivos para desviarse de su decisión de manera unilateral [@cerda2004teoria]. Este marco permite predecir comportamientos en entornos competitivos donde las reglas son conocidas por todos los agentes [@cerda2004teoria].
+
+### Fundamentos del Aprendizaje Automático (Machine Learning)
+La **Ciencia de Datos** se fundamenta en principios que guían la extracción de conocimiento a partir de los datos [@fernandez2023modelos]. Dentro de esta disciplina, el **Aprendizaje Automático** confiere a los sistemas la capacidad de aprender de la experiencia para mejorar su desempeño en tareas específicas sin ser programados explícitamente [@russell2018machine; @fernandez2023modelos].
+
+Según la naturaleza de los datos, los sistemas se clasifican en:
+*   **Aprendizaje Supervisado:** El modelo se entrena con datos etiquetados (entradas y salidas deseadas) para aprender una función de mapeo que permita realizar tareas de **clasificación** o **regresión** [@russell2018machine; @fernandez2023modelos].
+*   **Aprendizaje No Supervisado:** El algoritmo identifica estructuras ocultas en datos no etiquetados, destacando técnicas como el **Clustering** (agrupamiento de observaciones similares) y la **reducción de dimensionalidad** [@russell2018machine; @fernandez2023modelos].
+
+### Modelos de Regresión y Complejidad del Modelo
+Para la predicción de variables continuas, se emplean modelos de **regresión lineal**, que calculan una suma pesada de las características de entrada junto con una constante de tendencia [@russell2018machine]. En conjuntos de datos complejos, se utiliza la **regresión polinomial** para ajustar funciones no lineales [@russell2018machine]. 
+
+Un desafío crítico es el **sobreajuste (overfitting)**, que ocurre cuando un modelo es demasiado complejo para la cantidad de datos disponibles, logrando un excelente desempeño en el entrenamiento pero fallando al generalizar en datos nuevos [@russell2018machine]. Para mitigar esto, se utilizan técnicas de **regularización** como la **Regresión Contraída (Ridge)** o la **Regresión Lasso**, que penalizan la complejidad del modelo añadiendo un peso a la función de costo [@russell2018machine].
+
+### Métodos de Ensamble y Clasificación
+Los **métodos ensemble** combinan múltiples modelos predictivos para generar una predicción final más precisa y robusta que la de un experto individual [@fernandez2023modelos]. Entre las técnicas más utilizadas se encuentran:
+*   **Bagging (Bootstrap Aggregating):** Entrena múltiples modelos independientes, como en el caso de los **Bosques Aleatorios (Random Forest)**, para reducir la varianza y mejorar la generalización [@fernandez2023modelos; @russell2018machine].
+*   **Boosting:** Construye modelos de forma secuencial, donde cada nuevo algoritmo intenta corregir los errores cometidos por el anterior mediante el descenso de gradiente [@fernandez2023modelos].
+
+### Análisis de Datos y Reducción de Dimensionalidad
+Para simplificar grandes volúmenes de datos sin perder información significativa, se emplean técnicas de extracción de características [@russell2018machine]. El **Análisis de Componentes Principales (PCA)** transforma variables correlacionadas en un conjunto menor de variables no correlacionadas llamadas componentes principales [@fernandez2023modelos]. Asimismo, la **Descomposición en Valores Singulares (SVD)** es una herramienta matemática esencial para la factorización de matrices y la compresión de datos [@fernandez2023modelos].
+
+
