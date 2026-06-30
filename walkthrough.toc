@@ -1,0 +1,55 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{Resumen}{3}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Planteamiento del Problema y Objetivos}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}1.1 Planteamiento del problema}{4}{section.1.1}%
+\contentsline {section}{\numberline {1.2}1.2 Pregunta de investigación}{4}{section.1.2}%
+\contentsline {section}{\numberline {1.3}1.3 Objetivo general}{4}{section.1.3}%
+\contentsline {section}{\numberline {1.4}1.4 Objetivos específicos}{5}{section.1.4}%
+\contentsline {section}{\numberline {1.5}1.5 Justificación}{5}{section.1.5}%
+\contentsline {section}{\numberline {1.6}1.6 Marco conceptual}{5}{section.1.6}%
+\contentsline {section}{\numberline {1.7}1.7 Arquetipos considerados}{6}{section.1.7}%
+\contentsline {section}{\numberline {1.8}1.8 Marco Teórico}{6}{section.1.8}%
+\contentsline {subsection}{\numberline {1.8.1}Teoría de Juegos y Decisiones Estratégicas}{6}{subsection.1.8.1}%
+\contentsline {subsection}{\numberline {1.8.2}Fundamentos del Aprendizaje Automático (Machine Learning)}{7}{subsection.1.8.2}%
+\contentsline {subsection}{\numberline {1.8.3}Modelos de Regresión y Complejidad del Modelo}{7}{subsection.1.8.3}%
+\contentsline {subsection}{\numberline {1.8.4}Métodos de Ensamble y Clasificación}{7}{subsection.1.8.4}%
+\contentsline {subsection}{\numberline {1.8.5}Análisis de Datos y Reducción de Dimensionalidad}{7}{subsection.1.8.5}%
+\contentsline {chapter}{\numberline {2}Análisis Estadístico del Conjunto de Datos}{8}{chapter.2}%
+\contentsline {section}{\numberline {2.1}1. Estructura y Variables Disponibles}{8}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Datos Temporales}{8}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Datos Categóricos y de Composición de Mazos}{8}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Datos Numéricos de Popularidad y Rendimiento}{8}{subsection.2.1.3}%
+\contentsline {section}{\numberline {2.2}2. Resultados del Análisis Global y Meso}{9}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Comparativa de Parámetros Globales (Ganadores vs.~Perdedores)}{9}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Distribución de Popularidad y Desempeño por Arquetipo (Meso)}{9}{subsection.2.2.2}%
+\contentsline {chapter}{\numberline {3}Análisis Avanzado a Nivel Micro y Correlaciones de Victoria}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}1. Composición de Rarezas (Mazos Ganadores vs.~Mazos Perdedores)}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.2}2. Análisis de Sinergias (Combos de Cartas con Mayor Éxito)}{12}{section.3.2}%
+\contentsline {section}{\numberline {3.3}3. Importancia de las Características en la Predicción de Victoria}{13}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Análisis de la Importancia:}{14}{subsection.3.3.1}%
+\contentsline {chapter}{\numberline {4}Selección de Modelos Candidatos y Justificación Metodológica}{15}{chapter.4}%
+\contentsline {section}{\numberline {4.1}1. Random Forest (Regresor)}{15}{section.4.1}%
+\contentsline {section}{\numberline {4.2}2. XGBoost (Extreme Gradient Boosting)}{15}{section.4.2}%
+\contentsline {section}{\numberline {4.3}3. LightGBM (Light Gradient Boosting Machine)}{16}{section.4.3}%
+\contentsline {section}{\numberline {4.4}4. LSTM (Long Short-Term Memory)}{16}{section.4.4}%
+\contentsline {section}{\numberline {4.5}5. GRU (Gated Recurrent Unit)}{16}{section.4.5}%
+\contentsline {section}{\numberline {4.6}6. Prophet (Facebook)}{16}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Proceso Experimental y Validación Temporal}{18}{chapter.5}%
+\contentsline {section}{\numberline {5.1}1. División del Conjunto de Datos (Train-Validation-Test)}{18}{section.5.1}%
+\contentsline {section}{\numberline {5.2}2. Optimización de Hiperparámetros y Prevención del Sobreajuste}{18}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Modelos de Ensamble de Árboles (RF, XGBoost, LightGBM)}{19}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Modelos Neuronales Recurrentes (LSTM y GRU)}{19}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Modelos Estadísticos (Prophet)}{19}{subsection.5.2.3}%
+\contentsline {chapter}{\numberline {6}Evaluación Comparativa de los Modelos}{20}{chapter.6}%
+\contentsline {section}{\numberline {6.1}1. Tabla General de Métricas de Error Temporal}{20}{section.6.1}%
+\contentsline {section}{\numberline {6.2}2. Análisis del Desempeño y Curvas de Error}{20}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Curva de Predicción Temporal del Metajuego}{20}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Discusión Cuantitativa:}{21}{subsection.6.2.2}%
+\contentsline {chapter}{\numberline {7}Modelo Final, Justificación Científica y Arquitectura}{22}{chapter.7}%
+\contentsline {section}{\numberline {7.1}1. Selección y Justificación Científica del Modelo Final}{22}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Justificación de la Red LSTM}{22}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Justificación de LightGBM (como Clasificador de Combates Complementario)}{22}{subsection.7.1.2}%
+\contentsline {section}{\numberline {7.2}2. Arquitectura Completa del Sistema Predictivo}{23}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Módulos del Sistema:}{23}{subsection.7.2.1}%
+\contentsline {chapter}{\numberline {8}Conclusiones e Investigación de Campo}{24}{chapter.8}%
+\contentsline {chapter}{Referencias}{25}{chapter*.7}%

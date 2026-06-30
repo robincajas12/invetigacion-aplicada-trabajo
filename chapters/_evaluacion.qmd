@@ -1,4 +1,4 @@
-# Capítulo 6: Evaluación Comparativa de los Modelos
+# Evaluación Comparativa de los Modelos
 
 En este capítulo se presentan los resultados empíricos cuantitativos de los 6 modelos entrenados sobre las 50,000 partidas de Clash Royale en CPU, analizando sus desviaciones respecto al comportamiento real histórico del metajuego.
 

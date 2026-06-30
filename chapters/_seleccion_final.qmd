@@ -1,4 +1,4 @@
-# Capítulo 7: Modelo Final, Justificación Científica y Arquitectura
+# Modelo Final, Justificación Científica y Arquitectura
 
 En este capítulo se selecciona y justifica el mejor sistema predictivo para el metajuego de Clash Royale, describiendo su arquitectura técnica adaptada a entornos de recursos limitados.
 
@@ -12,7 +12,7 @@ En base a la evidencia experimental recolectada, se determina que el mejor siste
 
 ### Justificación de LightGBM (como Clasificador de Combates Complementario)
 Para mapear las predicciones agregadas de arquetipos hacia cartas dominantes y simulación de combates individuales, se acopla un clasificador LightGBM.
-1. **Eficiencia en CPU:** LightGBM requiere una fracción del costo computacional de XGBoost y entrena en milisegundos en 8GB de RAM.
+1. **Eficiencia en CPU:** LightGBM requiere una fracción del costo computacional de XGBoost y entrena en milisegundos.
 2. **Interpretabilidad de Atributos:** Permite descomponer la influencia de los niveles de cartas, las copas iniciales y la sinergia estructural del mazo.
 
 ---

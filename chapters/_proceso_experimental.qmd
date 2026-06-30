@@ -1,6 +1,6 @@
-# Capítulo 5: Proceso Experimental y Validación Temporal
+# Proceso Experimental y Validación Temporal
 
-Para asegurar la validez científica y evitar el sobreajuste (*overfitting*) en un entorno de hardware con 8GB de RAM y CPU, se diseñó un proceso experimental riguroso basado en principios de validación para series de tiempo.
+Para asegurar la validez científica y evitar el sobreajuste (*overfitting*) se diseñó un proceso experimental riguroso basado en principios de validación para series de tiempo.
 
 ## 1. División del Conjunto de Datos (Train-Validation-Test)
 
@@ -14,7 +14,7 @@ La división de los datos se realizó bajo una **Validación Temporal Estricta**
 
 ## 2. Optimización de Hiperparámetros y Prevención del Sobreajuste
 
-Para mitigar el riesgo de sobreajuste y adaptarnos a las limitaciones físicas de una PC de 8GB de RAM sin GPU, se aplicaron las siguientes estrategias de regularización y restricciones estructurales:
+Para mitigar el riesgo de sobreajuste y adaptarnos a las limitaciones físicas, se aplicaron las siguientes estrategias de regularización y restricciones estructurales:
 
 ### Modelos de Ensamble de Árboles (RF, XGBoost, LightGBM)
 * **Restricción de Profundidad:** Se limitó la profundidad máxima de los árboles a $depth \le 4$ en XGBoost y $depth \le 3$ en LightGBM. Esto previene que los árboles memoricen el ruido transitorio de las fluctuaciones semanales.

@@ -136,6 +136,39 @@
 \makeatother
 
 
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \ifLuaTeX
 \usepackage[bidi=basic,shorthands=off]{babel}
@@ -208,7 +241,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={PREDICCIÓN DEL METAJUEGO EN CLASH ROYALE USANDO INTELIGENCIA ARTIFICIAL CON DATOS DE 2023-2026},
+  pdftitle={Predicción del metajuego en Clash Royale usando inteligencia artificial con datos de 2023-2026},
   pdfauthor={Cajas Molina Robinson Stalin; Baraja Simbaña Cristian Paul},
   pdflang={es},
   colorlinks=true,
@@ -219,10 +252,10 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{PREDICCIÓN DEL METAJUEGO EN CLASH ROYALE USANDO INTELIGENCIA
-ARTIFICIAL CON DATOS DE 2023-2026}
+\title{Predicción del metajuego en Clash Royale usando inteligencia
+artificial con datos de 2023-2026}
 \author{Cajas Molina Robinson Stalin \and Baraja Simbaña Cristian Paul}
-\date{2026-06-28}
+\date{2026-06-30}
 \begin{document}
 \maketitle
 
@@ -244,7 +277,7 @@ ARTIFICIAL CON DATOS DE 2023-2026}
 
 \vspace{2.5cm}
 
-{\Huge\textbf{PREDICCIÓN DEL METAJUEGO EN CLASH ROYALE USANDO INTELIGENCIA ARTIFICIAL CON DATOS DE 2023-2026}}
+{\Huge\textbf{Predicción del metajuego en Clash Royale usando inteligencia artificial con datos de 2023-2026}}
 
 \vspace{2.2cm}
 
@@ -306,8 +339,8 @@ el análisis competitivo en eSports.
 
 \newpage
 
-\chapter{Capítulo 1: Planteamiento del Problema y
-Objetivos}\label{capuxedtulo-1-planteamiento-del-problema-y-objetivos}
+\chapter{Planteamiento del Problema y
+Objetivos}\label{planteamiento-del-problema-y-objetivos}
 
 \section{1.1 Planteamiento del
 problema}\label{planteamiento-del-problema}
@@ -326,10 +359,9 @@ volvió especialmente dinámico debido a la aparición de evoluciones de
 cartas, ajustes de balance, cambios en progresión, temporadas
 competitivas y respuestas rápidas de la comunidad. Supercell introdujo
 las evoluciones de cartas en 2023, agregando nuevas habilidades a cartas
-existentes y modificando profundamente la construcción de mazos
-(\textbf{supercell\_evolution?}). En 2026, las actualizaciones
-continuaron incorporando nuevas evoluciones, héroes, modos de juego y
-ajustes de progresión (\textbf{supercell\_june2026?}).
+existentes y modificando profundamente la construcción de mazos. En
+2026, las actualizaciones continuaron incorporando nuevas evoluciones,
+héroes, modos de juego y ajustes de progresión
 
 El problema de investigación consiste en determinar si es posible
 predecir cambios y tendencias futuras del metajuego mediante
@@ -464,8 +496,100 @@ encajan en una sola categoría \\
 Esta clasificación permite transformar millones de combinaciones
 posibles en grupos interpretables para el análisis predictivo.
 
-\chapter{Capítulo 2: Análisis Estadístico del Conjunto de
-Datos}\label{capuxedtulo-2-anuxe1lisis-estaduxedstico-del-conjunto-de-datos}
+\section{1.8 Marco Teórico}\label{marco-teuxf3rico}
+
+El presente marco teórico fundamenta los constructos conceptuales,
+estadísticos y computacionales que sustentan la investigación,
+integrando disciplinas como la \textbf{Teoría de Juegos}, la
+\textbf{Ciencia de Datos} y el \textbf{Aprendizaje Automático}.
+
+\subsection{Teoría de Juegos y Decisiones
+Estratégicas}\label{teoruxeda-de-juegos-y-decisiones-estratuxe9gicas}
+
+La \textbf{Teoría de Juegos} se define como el análisis riguroso y
+sistemático de situaciones de conflicto y cooperación en las que
+interactúan individuos racionales (Cerdá Tena et~al., 2004). En estos
+escenarios, cada jugador busca maximizar su \textbf{función de
+utilidad}, pero el resultado final no depende únicamente de sus propias
+acciones, sino de las decisiones tomadas por los demás participantes
+(Cerdá Tena et~al., 2004).
+
+Un concepto central es el \textbf{Equilibrio de Nash}, un perfil de
+estrategias en el cual la elección de cada jugador es una respuesta
+óptima a las estrategias del resto; de este modo, ningún individuo tiene
+incentivos para desviarse de su decisión de manera unilateral (Cerdá
+Tena et~al., 2004). Este marco permite predecir comportamientos en
+entornos competitivos donde las reglas son conocidas por todos los
+agentes (Cerdá Tena et~al., 2004).
+
+\subsection{Fundamentos del Aprendizaje Automático (Machine
+Learning)}\label{fundamentos-del-aprendizaje-automuxe1tico-machine-learning}
+
+La \textbf{Ciencia de Datos} se fundamenta en principios que guían la
+extracción de conocimiento a partir de los datos (Fernández Genaro,
+2023). Dentro de esta disciplina, el \textbf{Aprendizaje Automático}
+confiere a los sistemas la capacidad de aprender de la experiencia para
+mejorar su desempeño en tareas específicas sin ser programados
+explícitamente (Fernández Genaro, 2023; Russell, 2018).
+
+Según la naturaleza de los datos, los sistemas se clasifican en: *
+\textbf{Aprendizaje Supervisado:} El modelo se entrena con datos
+etiquetados (entradas y salidas deseadas) para aprender una función de
+mapeo que permita realizar tareas de \textbf{clasificación} o
+\textbf{regresión} (Fernández Genaro, 2023; Russell, 2018). *
+\textbf{Aprendizaje No Supervisado:} El algoritmo identifica estructuras
+ocultas en datos no etiquetados, destacando técnicas como el
+\textbf{Clustering} (agrupamiento de observaciones similares) y la
+\textbf{reducción de dimensionalidad} (Fernández Genaro, 2023; Russell,
+2018).
+
+\subsection{Modelos de Regresión y Complejidad del
+Modelo}\label{modelos-de-regresiuxf3n-y-complejidad-del-modelo}
+
+Para la predicción de variables continuas, se emplean modelos de
+\textbf{regresión lineal}, que calculan una suma pesada de las
+características de entrada junto con una constante de tendencia
+(Russell, 2018). En conjuntos de datos complejos, se utiliza la
+\textbf{regresión polinomial} para ajustar funciones no lineales
+(Russell, 2018).
+
+Un desafío crítico es el \textbf{sobreajuste (overfitting)}, que ocurre
+cuando un modelo es demasiado complejo para la cantidad de datos
+disponibles, logrando un excelente desempeño en el entrenamiento pero
+fallando al generalizar en datos nuevos (Russell, 2018). Para mitigar
+esto, se utilizan técnicas de \textbf{regularización} como la
+\textbf{Regresión Contraída (Ridge)} o la \textbf{Regresión Lasso}, que
+penalizan la complejidad del modelo añadiendo un peso a la función de
+costo (Russell, 2018).
+
+\subsection{Métodos de Ensamble y
+Clasificación}\label{muxe9todos-de-ensamble-y-clasificaciuxf3n}
+
+Los \textbf{métodos ensemble} combinan múltiples modelos predictivos
+para generar una predicción final más precisa y robusta que la de un
+experto individual (Fernández Genaro, 2023). Entre las técnicas más
+utilizadas se encuentran: * \textbf{Bagging (Bootstrap Aggregating):}
+Entrena múltiples modelos independientes, como en el caso de los
+\textbf{Bosques Aleatorios (Random Forest)}, para reducir la varianza y
+mejorar la generalización (Fernández Genaro, 2023; Russell, 2018). *
+\textbf{Boosting:} Construye modelos de forma secuencial, donde cada
+nuevo algoritmo intenta corregir los errores cometidos por el anterior
+mediante el descenso de gradiente (Fernández Genaro, 2023).
+
+\subsection{Análisis de Datos y Reducción de
+Dimensionalidad}\label{anuxe1lisis-de-datos-y-reducciuxf3n-de-dimensionalidad}
+
+Para simplificar grandes volúmenes de datos sin perder información
+significativa, se emplean técnicas de extracción de características
+(Russell, 2018). El \textbf{Análisis de Componentes Principales (PCA)}
+transforma variables correlacionadas en un conjunto menor de variables
+no correlacionadas llamadas componentes principales (Fernández Genaro,
+2023). Asimismo, la \textbf{Descomposición en Valores Singulares (SVD)}
+es una herramienta matemática esencial para la factorización de matrices
+y la compresión de datos (Fernández Genaro, 2023).
+
+\chapter{Análisis Estadístico del Conjunto de
+Datos}\label{anuxe1lisis-estaduxedstico-del-conjunto-de-datos}
 
 El análisis cuantitativo de las variables disponibles en el dataset es
 fundamental para justificar la estructura de entrada de los modelos de
@@ -602,8 +726,8 @@ muestran tasas de victorias en una banda muy estrecha entre el 49\% y
 53\%, validando estadísticamente el balance general provisto por el
 diseño de Clash Royale.
 
-\chapter{Capítulo 3: Análisis Avanzado a Nivel Micro y Correlaciones de
-Victoria}\label{capuxedtulo-3-anuxe1lisis-avanzado-a-nivel-micro-y-correlaciones-de-victoria}
+\chapter{Análisis Avanzado a Nivel Micro y Correlaciones de
+Victoria}\label{anuxe1lisis-avanzado-a-nivel-micro-y-correlaciones-de-victoria}
 
 En este capítulo se evalúan las correlaciones a nivel micro (composición
 de cartas, rarezas y sinergias) y se determina la importancia de
@@ -701,6 +825,8 @@ Rate}
 
 \end{figure}%
 
+\newpage
+
 La combinación \emph{Baby Dragon + Hunter} destaca exponencialmente por
 su enorme win rate (68.90\%). Esto se debe a una complementariedad
 óptima de roles defensivos: el Baby Dragon aporta limpieza de hordas en
@@ -775,8 +901,8 @@ Importancia:}\label{anuxe1lisis-de-la-importancia}
   estratégica o los desbalances tácticos.
 \end{enumerate}
 
-\chapter{Capítulo 4: Selección de Modelos Candidatos y Justificación
-Metodológica}\label{capuxedtulo-4-selecciuxf3n-de-modelos-candidatos-y-justificaciuxf3n-metodoluxf3gica}
+\chapter{Selección de Modelos Candidatos y Justificación
+Metodológica}\label{selecciuxf3n-de-modelos-candidatos-y-justificaciuxf3n-metodoluxf3gica}
 
 Para predecir las series temporales de uso y win rates de los arquetipos
 de Clash Royale de forma robusta e interpretable, se evaluaron y
@@ -798,7 +924,7 @@ de algoritmos en ciencia de datos.
   \textbf{Desventajas:} Incapacidad absoluta para extrapolar tendencias
   fuera de los límites de los datos históricos de entrenamiento.
 \item
-  \textbf{Costo Computacional:} Bajo en CPU (adecuado para 8GB RAM).
+  \textbf{Costo Computacional:} Bajo en CPU
 \item
   \textbf{Interpretabilidad:} Media-alta mediante la métrica de
   importancia de características.
@@ -914,8 +1040,8 @@ Memory)}\label{lstm-long-short-term-memory}
   \textbf{Interpretabilidad:} Alta.
 \end{itemize}
 
-\chapter{Capítulo 5: Proceso Experimental y Validación
-Temporal}\label{capuxedtulo-5-proceso-experimental-y-validaciuxf3n-temporal}
+\chapter{Proceso Experimental y Validación
+Temporal}\label{proceso-experimental-y-validaciuxf3n-temporal}
 
 Para asegurar la validez científica y evitar el sobreajuste
 (\emph{overfitting}) en un entorno de hardware con 8GB de RAM y CPU, se
@@ -999,8 +1125,8 @@ GRU)}\label{modelos-neuronales-recurrentes-lstm-y-gru}
   reduciendo el peligro de falsas oscilaciones.
 \end{itemize}
 
-\chapter{Capítulo 6: Evaluación Comparativa de los
-Modelos}\label{capuxedtulo-6-evaluaciuxf3n-comparativa-de-los-modelos}
+\chapter{Evaluación Comparativa de los
+Modelos}\label{evaluaciuxf3n-comparativa-de-los-modelos}
 
 En este capítulo se presentan los resultados empíricos cuantitativos de
 los 6 modelos entrenados sobre las 50,000 partidas de Clash Royale en
@@ -1084,8 +1210,8 @@ Metajuego}
   dinámico cerrado de suma cero.
 \end{enumerate}
 
-\chapter{Capítulo 7: Modelo Final, Justificación Científica y
-Arquitectura}\label{capuxedtulo-7-modelo-final-justificaciuxf3n-cientuxedfica-y-arquitectura}
+\chapter{Modelo Final, Justificación Científica y
+Arquitectura}\label{modelo-final-justificaciuxf3n-cientuxedfica-y-arquitectura}
 
 En este capítulo se selecciona y justifica el mejor sistema predictivo
 para el metajuego de Clash Royale, describiendo su arquitectura técnica
@@ -1212,19 +1338,27 @@ CPU, se establecen las siguientes conclusiones científicas:
   legendarias por mazo). Esto confirma empíricamente la hipótesis de
   balance de Supercell: poseer más cartas legendarias o épicas en el
   mazo \textbf{no aumenta la probabilidad de victoria}.
-\item
-  \textbf{Optimización bajo Recursos Limitados:} Se comprobó que el
-  entrenamiento de modelos neuronales complejos (LSTM) y ensambles
-  optimizados (LightGBM) es perfectamente viable en hardware modesto de
-  \textbf{8GB de RAM y CPU} sin aceleración GPU, siempre y cuando se
-  configure el entorno para limitar los hilos de CPU en paralelo
-  (\texttt{torch.set\_num\_threads(1)}), previniendo el estrangulamiento
-  de subprocesos en Windows.
 \end{enumerate}
 
-\chapter{Referencias}\label{referencias}
+\chapter*{Referencias}\label{referencias}
+\addcontentsline{toc}{chapter}{Referencias}
 
 \protect\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-cerda2004teoria}
+Cerdá Tena, E., Pérez Navarro, J., \& Jimeno Pastor, J. L. (2004).
+\emph{Teoría de Juegos}. Pearson Educación, S.A.
+
+\bibitem[\citeproctext]{ref-fernandez2023modelos}
+Fernández Genaro, J. L. (2023). \emph{Modelos de Machine Learning para
+la Ciencia de Datos} {[}Trabajo de Fin de Grado{]}. Universidad de
+Salamanca, Facultad de Ciencias, Departamento de Estadística.
+
+\bibitem[\citeproctext]{ref-russell2018machine}
+Russell, R. (2018). \emph{Machine Learning: Guía Paso a Paso Para
+Implementar Algoritmos De Machine Learning Con Python}. Rudolph Russell.
+
+\end{CSLReferences}
 
 
 

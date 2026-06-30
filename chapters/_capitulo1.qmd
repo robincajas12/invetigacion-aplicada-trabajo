@@ -1,10 +1,10 @@
-# Capítulo 1: Planteamiento del Problema y Objetivos
+# Planteamiento del Problema y Objetivos
 
 ## 1.1 Planteamiento del problema
 
 *Clash Royale* es un videojuego competitivo de estrategia en tiempo real en el que dos jugadores se enfrentan utilizando mazos de ocho cartas. Cada carta posee atributos específicos, como costo de elixir, daño, puntos de vida, velocidad, rareza, tipo de unidad y función táctica. La combinación de estas cartas produce mazos con identidades estratégicas distintas, conocidos como arquetipos.
 
-El metajuego, o *meta*, representa el conjunto de cartas, mazos y estrategias que dominan el entorno competitivo durante un periodo determinado. Entre 2023 y 2026, el metajuego de *Clash Royale* se volvió especialmente dinámico debido a la aparición de evoluciones de cartas, ajustes de balance, cambios en progresión, temporadas competitivas y respuestas rápidas de la comunidad. Supercell introdujo las evoluciones de cartas en 2023, agregando nuevas habilidades a cartas existentes y modificando profundamente la construcción de mazos [@supercell_evolution]. En 2026, las actualizaciones continuaron incorporando nuevas evoluciones, héroes, modos de juego y ajustes de progresión [@supercell_june2026].
+El metajuego, o *meta*, representa el conjunto de cartas, mazos y estrategias que dominan el entorno competitivo durante un periodo determinado. Entre 2023 y 2026, el metajuego de *Clash Royale* se volvió especialmente dinámico debido a la aparición de evoluciones de cartas, ajustes de balance, cambios en progresión, temporadas competitivas y respuestas rápidas de la comunidad. Supercell introdujo las evoluciones de cartas en 2023, agregando nuevas habilidades a cartas existentes y modificando profundamente la construcción de mazos. En 2026, las actualizaciones continuaron incorporando nuevas evoluciones, héroes, modos de juego y ajustes de progresión 
 
 El problema de investigación consiste en determinar si es posible predecir cambios y tendencias futuras del metajuego mediante inteligencia artificial. Esta tarea es compleja porque el rendimiento de una carta no depende solo de sus estadísticas individuales, sino también de sus sinergias, counters, popularidad, habilidad del jugador, frecuencia de uso y contexto competitivo.
 
@@ -72,8 +72,10 @@ Un concepto central es el **Equilibrio de Nash**, un perfil de estrategias en el
 La **Ciencia de Datos** se fundamenta en principios que guían la extracción de conocimiento a partir de los datos [@fernandez2023modelos]. Dentro de esta disciplina, el **Aprendizaje Automático** confiere a los sistemas la capacidad de aprender de la experiencia para mejorar su desempeño en tareas específicas sin ser programados explícitamente [@russell2018machine; @fernandez2023modelos].
 
 Según la naturaleza de los datos, los sistemas se clasifican en:
-*   **Aprendizaje Supervisado:** El modelo se entrena con datos etiquetados (entradas y salidas deseadas) para aprender una función de mapeo que permita realizar tareas de **clasificación** o **regresión** [@russell2018machine; @fernandez2023modelos].
-*   **Aprendizaje No Supervisado:** El algoritmo identifica estructuras ocultas en datos no etiquetados, destacando técnicas como el **Clustering** (agrupamiento de observaciones similares) y la **reducción de dimensionalidad** [@russell2018machine; @fernandez2023modelos].
+
+* **Aprendizaje Supervisado:** El modelo se entrena con datos etiquetados (entradas y salidas deseadas) para aprender una función de mapeo que permita realizar tareas de **clasificación** o **regresión** [@russell2018machine; @fernandez2023modelos].
+
+* **Aprendizaje No Supervisado:** El algoritmo identifica estructuras ocultas en datos no etiquetados, destacando técnicas como el **Clustering** (agrupamiento de observaciones similares) y la **reducción de dimensionalidad** [@russell2018machine; @fernandez2023modelos].
 
 ### Modelos de Regresión y Complejidad del Modelo
 Para la predicción de variables continuas, se emplean modelos de **regresión lineal**, que calculan una suma pesada de las características de entrada junto con una constante de tendencia [@russell2018machine]. En conjuntos de datos complejos, se utiliza la **regresión polinomial** para ajustar funciones no lineales [@russell2018machine]. 
@@ -82,7 +84,9 @@ Un desafío crítico es el **sobreajuste (overfitting)**, que ocurre cuando un m
 
 ### Métodos de Ensamble y Clasificación
 Los **métodos ensemble** combinan múltiples modelos predictivos para generar una predicción final más precisa y robusta que la de un experto individual [@fernandez2023modelos]. Entre las técnicas más utilizadas se encuentran:
+
 *   **Bagging (Bootstrap Aggregating):** Entrena múltiples modelos independientes, como en el caso de los **Bosques Aleatorios (Random Forest)**, para reducir la varianza y mejorar la generalización [@fernandez2023modelos; @russell2018machine].
+
 *   **Boosting:** Construye modelos de forma secuencial, donde cada nuevo algoritmo intenta corregir los errores cometidos por el anterior mediante el descenso de gradiente [@fernandez2023modelos].
 
 ### Análisis de Datos y Reducción de Dimensionalidad

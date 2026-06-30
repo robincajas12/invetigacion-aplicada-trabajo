@@ -15,7 +15,7 @@
 
 \vspace{2.5cm}
 
-{\Huge\textbf{PREDICCIÓN DEL METAJUEGO EN CLASH ROYALE USANDO INTELIGENCIA ARTIFICIAL CON DATOS DE 2023-2026}}
+{\Huge\textbf{Predicción del metajuego en Clash Royale usando inteligencia artificial con datos de 2023-2026}}
 
 \vspace{2.2cm}
 

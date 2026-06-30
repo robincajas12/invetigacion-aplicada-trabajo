@@ -1,4 +1,4 @@
-# Capítulo 3: Análisis Avanzado a Nivel Micro y Correlaciones de Victoria
+# Análisis Avanzado a Nivel Micro y Correlaciones de Victoria
 
 En este capítulo se evalúan las correlaciones a nivel micro (composición de cartas, rarezas y sinergias) y se determina la importancia de variables mediante modelado de aprendizaje supervisado.
 
@@ -32,6 +32,8 @@ El metajuego micro de Clash Royale se rige por la complementariedad táctica de 
 | **Miner + Poison** | 290 | 53.79% |
 
 ![Top Sinergias y Combos de Cartas por Win Rate](chapters/images/sinergias_combos.png){#fig-sinergias fig-align="center" width=70%}
+
+\newpage
 
 La combinación *Baby Dragon + Hunter* destaca exponencialmente por su enorme win rate (68.90%). Esto se debe a una complementariedad óptima de roles defensivos: el Baby Dragon aporta limpieza de hordas en área por aire, mientras que el Hunter provee daño masivo concentrado a corta distancia contra unidades pesadas terrestres y aéreas.
 

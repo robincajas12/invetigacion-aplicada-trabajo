@@ -1,4 +1,4 @@
-# Capítulo 2: Análisis Estadístico del Conjunto de Datos
+# Análisis Estadístico del Conjunto de Datos
 
 El análisis cuantitativo de las variables disponibles en el dataset es fundamental para justificar la estructura de entrada de los modelos de inteligencia artificial y su preprocesamiento.
 
@@ -50,6 +50,9 @@ Este resultado indica que, mientras que el costo neto de elíxir de la baraja no
 **Figura 2.1:** Comparativa de la tasa de uso frente al porcentaje de victorias por arquetipo.
 
 La Figura 2.1 ilustra la distribución de popularidad y rendimiento observada en los datos:
+
 1. **Dominio del Ciclo Rápido:** Más de una tercera parte de los jugadores opta por mazos con rotaciones veloces (Hog Rider, Goblin Barrel, etc.).
+
 2. **Efecto Especialista de Asedio:** Los mazos de Asedio, a pesar de registrar una bajísima tasa de popularidad (3.2%), demuestran la tasa de victorias media más alta de todo el ecosistema competitivo (53.12%), lo que indica que se trata de un arquetipo jugado de forma exclusiva y exitosa por expertos.
+
 3. **Equilibrio de Win Rate:** Todos los arquetipos principales muestran tasas de victorias en una banda muy estrecha entre el 49% y 53%, validando estadísticamente el balance general provisto por el diseño de Clash Royale.
