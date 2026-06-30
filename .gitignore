@@ -2,8 +2,8 @@
 .ipynv_checkpoints
 __pycache__
 .venv
-walkthrough.log
-walkthrough.tex
-walkthrough.pdf
-walkthrough.toc
-walkthrough.aux
+main.log
+main.tex
+main.pdf
+main.toc
+main.aux
