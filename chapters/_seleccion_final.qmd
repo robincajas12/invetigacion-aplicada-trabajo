@@ -21,7 +21,7 @@ Para mapear las predicciones agregadas de arquetipos hacia cartas dominantes y s
 
 El flujo de procesamiento del sistema de IA se estructura en cuatro módulos acoplados:
 
-```mermaid
+```{mermaid}
 graph TD
     A[API de Supercell / JSON de Batallas] --> B[Módulo de Ingesta y Clasificación]
     B -->|Mapeo de Wincons| C[Series Temporales de Arquetipos]

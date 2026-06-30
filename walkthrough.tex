@@ -67,46 +67,6 @@
 \fi
 \makeatother
 
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{241,243,245}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
-\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \usepackage{longtable,booktabs,array}
 \newcounter{none} % for unnumbered tables
@@ -222,7 +182,7 @@
 \title{PREDICCIÓN DEL METAJUEGO EN CLASH ROYALE USANDO INTELIGENCIA
 ARTIFICIAL CON DATOS DE 2023-2026}
 \author{Cajas Molina Robinson Stalin \and Baraja Simbaña Cristian Paul}
-\date{2026-06-28}
+\date{2026-06-29}
 \begin{document}
 \maketitle
 
@@ -1138,18 +1098,7 @@ Predictivo}\label{arquitectura-completa-del-sistema-predictivo}
 El flujo de procesamiento del sistema de IA se estructura en cuatro
 módulos acoplados:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{graph TD}
-\NormalTok{    A[API de Supercell / JSON de Batallas] {-}{-}\textgreater{} B[Módulo de Ingesta y Clasificación]}
-\NormalTok{    B {-}{-}\textgreater{}|Mapeo de Wincons| C[Series Temporales de Arquetipos]}
-\NormalTok{    B {-}{-}\textgreater{}|Diferenciales de Atributos| D[Clasificador de Victoria LightGBM]}
-\NormalTok{    C {-}{-}\textgreater{} E[Modelo Predictivo Recurrente LSTM]}
-\NormalTok{    E {-}{-}\textgreater{}|Predicción de Tasa de Uso a Futuro| F[Simulador de Metajuego]}
-\NormalTok{    D {-}{-}\textgreater{}|Simulación de Combates Uno{-}a{-}Uno| F}
-\NormalTok{    F {-}{-}\textgreater{} G[Predicción de Tendencias y Cartas Dominantes]}
-\end{Highlighting}
-\end{Shaded}
+\includegraphics[width=6.1in,height=8.15in]{walkthrough_files/figure-latex/mermaid-figure-1.png}
 
 \subsection{Módulos del Sistema:}\label{muxf3dulos-del-sistema}
 
