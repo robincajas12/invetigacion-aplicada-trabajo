@@ -1,22 +1,26 @@
 # Planteamiento del Problema y Objetivos
 
-## 1.1 Planteamiento del problema
-@gomez2025
+## Planteamiento del problema
+
 *Clash Royale* es un videojuego competitivo de estrategia en tiempo real en el que dos jugadores se enfrentan utilizando mazos de ocho cartas. Cada carta posee atributos específicos, como costo de elixir, daño, puntos de vida, velocidad, rareza, tipo de unidad y función táctica. La combinación de estas cartas produce mazos con identidades estratégicas distintas, conocidos como arquetipos.
 
 El metajuego, o *meta*, representa el conjunto de cartas, mazos y estrategias que dominan el entorno competitivo durante un periodo determinado. Entre 2023 y 2026, el metajuego de *Clash Royale* se volvió especialmente dinámico debido a la aparición de evoluciones de cartas, ajustes de balance, cambios en progresión, temporadas competitivas y respuestas rápidas de la comunidad. Supercell introdujo las evoluciones de cartas en 2023, agregando nuevas habilidades a cartas existentes y modificando profundamente la construcción de mazos. En 2026, las actualizaciones continuaron incorporando nuevas evoluciones, héroes, modos de juego y ajustes de progresión 
 
 El problema de investigación consiste en determinar si es posible predecir cambios y tendencias futuras del metajuego mediante inteligencia artificial. Esta tarea es compleja porque el rendimiento de una carta no depende solo de sus estadísticas individuales, sino también de sus sinergias, counters, popularidad, habilidad del jugador, frecuencia de uso y contexto competitivo.
 
-## 1.2 Pregunta de investigación
+## Pregunta de investigación
 
 ¿Cómo pueden utilizarse técnicas de inteligencia artificial y minería de datos para predecir cambios y tendencias futuras del metajuego de *Clash Royale* durante el periodo 2023-2026?
 
-## 1.3 Objetivo general
+## Hipótesis
+
+Se plantea que los modelos de aprendizaje automático con capacidad secuencial (LSTM, GRU) obtendrán un error de predicción menor que los modelos estáticos (Random Forest, XGBoost, LightGBM) al predecir la evolución temporal del metajuego, debido a su capacidad de capturar dependencias acumulativas de largo plazo. Asimismo, se hipotetiza que la diferencia en el nivel acumulado de cartas y las copas iniciales del jugador son los factores más determinantes para predecir el resultado de una partida, superando la influencia de la composición del mazo o la rareza de las cartas.
+
+## Objetivo general
 
 Desarrollar un modelo de inteligencia artificial capaz de predecir cambios y tendencias futuras en el metajuego de *Clash Royale*, utilizando datos relacionados con el rendimiento, popularidad y uso de cartas y mazos durante el periodo 2023-2026.
 
-## 1.4 Objetivos específicos
+## Objetivos específicos
 
 A continuación se detallan las metas a cumplir:
 
@@ -26,13 +30,13 @@ A continuación se detallan las metas a cumplir:
 4. Comparar el rendimiento de distintos modelos predictivos mediante métricas de precisión y exactitud.
 5. Identificar los factores que más influyen en la evolución del metajuego, como balance de cartas, frecuencia de uso y efectividad de arquetipos.
 
-## 1.5 Justificación
+## Justificación
 
 La predicción del metajuego es relevante porque permite comprender cómo evoluciona un sistema competitivo complejo. En *Clash Royale*, un cambio de balance sobre una carta puede modificar no solo su tasa de uso, sino también la viabilidad de mazos completos y de arquetipos relacionados. Por ejemplo, una mejora en una condición de victoria puede aumentar su popularidad y, al mismo tiempo, elevar la presencia de cartas diseñadas para contrarrestarla.
 
 Desde la ciencia de datos, el metajuego puede representarse como una serie temporal multivariante. Cada ventana temporal contiene señales de popularidad, rendimiento y adopción estratégica. Desde la inteligencia artificial, este problema puede abordarse con modelos tabulares, ensambles de árboles, redes recurrentes y modelos de pronóstico. Desde los eSports analytics, la predicción del meta permite apoyar decisiones de entrenamiento, selección de mazos, preparación de counters y análisis de torneos.
 
-## 1.6 Marco conceptual
+## Marco conceptual
 
 El análisis se organiza alrededor de cinco conceptos:
 
@@ -44,7 +48,7 @@ El análisis se organiza alrededor de cinco conceptos:
 | Tasa de uso | Frecuencia relativa con la que aparece una carta, mazo o arquetipo |
 | Tasa de victoria | Porcentaje de victorias obtenido por una carta, mazo o arquetipo |
 
-## 1.7 Arquetipos considerados
+## Arquetipos considerados
 
 Para reducir la complejidad combinatoria, los mazos se agrupan en arquetipos:
 
@@ -59,37 +63,24 @@ Para reducir la complejidad combinatoria, los mazos se agrupan en arquetipos:
 
 Esta clasificación permite transformar millones de combinaciones posibles en grupos interpretables para el análisis predictivo.
 
-## 1.8 Marco Teórico
 
-El presente marco teórico fundamenta los constructos conceptuales, estadísticos y computacionales que sustentan la investigación, integrando disciplinas como la **Teoría de Juegos**, la **Ciencia de Datos** y el **Aprendizaje Automático**.
 
-### Teoría de Juegos y Decisiones Estratégicas
-La **Teoría de Juegos** se define como el análisis riguroso y sistemático de situaciones de conflicto y cooperación en las que interactúan individuos racionales [@cerda2004teoria]. En estos escenarios, cada jugador busca maximizar su **función de utilidad**, pero el resultado final no depende únicamente de sus propias acciones, sino de las decisiones tomadas por los demás participantes [@cerda2004teoria]. 
+## Marco Metodológico
 
-Un concepto central es el **Equilibrio de Nash**, un perfil de estrategias en el cual la elección de cada jugador es una respuesta óptima a las estrategias del resto; de este modo, ningún individuo tiene incentivos para desviarse de su decisión de manera unilateral [@cerda2004teoria]. Este marco permite predecir comportamientos en entornos competitivos donde las reglas son conocidas por todos los agentes [@cerda2004teoria].
+La presente investigación adopta el **método analítico** como estrategia principal de investigación. Este método consiste en descomponer un fenómeno complejo en sus componentes fundamentales para comprender su funcionamiento interno, y posteriormente reconstruirlo mediante síntesis intelectual.
 
-### Fundamentos del Aprendizaje Automático (Machine Learning)
-La **Ciencia de Datos** se fundamenta en principios que guían la extracción de conocimiento a partir de los datos [@fernandez2023modelos]. Dentro de esta disciplina, el **Aprendizaje Automático** confiere a los sistemas la capacidad de aprender de la experiencia para mejorar su desempeño en tareas específicas sin ser programados explícitamente [@russell2018machine; @fernandez2023modelos].
+El proceso metodológico se desarrolló en las siguientes fases:
 
-Según la naturaleza de los datos, los sistemas se clasifican en:
+1. **Definición del objeto de estudio:** Se delimitó el fenómeno del metajuego de *Clash Royale* como un sistema dinámico compuesto por cartas, mazos, arquetipos y jugadores que interactúan entre sí.
 
-* **Aprendizaje Supervisado:** El modelo se entrena con datos etiquetados (entradas y salidas deseadas) para aprender una función de mapeo que permita realizar tareas de **clasificación** o **regresión** [@russell2018machine; @fernandez2023modelos].
+2. **Formulación de hipótesis:** Se planteó que los modelos secuenciales de inteligencia artificial (LSTM, GRU) serían más efectivos para predecir la evolución temporal del metajuego que los modelos estáticos, y que las variables de habilidad y progresión del jugador tendrían mayor peso predictivo que la rareza de las cartas.
 
-* **Aprendizaje No Supervisado:** El algoritmo identifica estructuras ocultas en datos no etiquetados, destacando técnicas como el **Clustering** (agrupamiento de observaciones similares) y la **reducción de dimensionalidad** [@russell2018machine; @fernandez2023modelos].
+3. **Descomposición:** El fenómeno se separó en sus elementos fundamentales: cartas individuales (con atributos como costo, daño, rareza), mazos (combinaciones de ocho cartas), arquetipos (categorías estratégicas) y métricas de rendimiento (tasa de uso, tasa de victoria).
 
-### Modelos de Regresión y Complejidad del Modelo
-Para la predicción de variables continuas, se emplean modelos de **regresión lineal**, que calculan una suma pesada de las características de entrada junto con una constante de tendencia [@russell2018machine]. En conjuntos de datos complejos, se utiliza la **regresión polinomial** para ajustar funciones no lineales [@russell2018machine]. 
+4. **Clasificación y organización:** Los datos obtenidos se ordenaron mediante ventanas temporales de 1,000 partidas, clasificando los mazos en arquetipos y calculando estadísticas descriptivas globales, meso y micro.
 
-Un desafío crítico es el **sobreajuste (overfitting)**, que ocurre cuando un modelo es demasiado complejo para la cantidad de datos disponibles, logrando un excelente desempeño en el entrenamiento pero fallando al generalizar en datos nuevos [@russell2018machine]. Para mitigar esto, se utilizan técnicas de **regularización** como la **Regresión Contraída (Ridge)** o la **Regresión Lasso**, que penalizan la complejidad del modelo añadiendo un peso a la función de costo [@russell2018machine].
+5. **Recomposición:** Se entrenaron y compararon seis modelos predictivos (Random Forest, XGBoost, LightGBM, LSTM, GRU y Prophet) para reconstruir la dinámica del metajuego a partir de las partes analizadas, seleccionando un ensamble híbrido LSTM + LightGBM como sistema final.
 
-### Métodos de Ensamble y Clasificación
-Los **métodos ensemble** combinan múltiples modelos predictivos para generar una predicción final más precisa y robusta que la de un experto individual [@fernandez2023modelos]. Entre las técnicas más utilizadas se encuentran:
-
-*   **Bagging (Bootstrap Aggregating):** Entrena múltiples modelos independientes, como en el caso de los **Bosques Aleatorios (Random Forest)**, para reducir la varianza y mejorar la generalización [@fernandez2023modelos; @russell2018machine].
-
-*   **Boosting:** Construye modelos de forma secuencial, donde cada nuevo algoritmo intenta corregir los errores cometidos por el anterior mediante el descenso de gradiente [@fernandez2023modelos].
-
-### Análisis de Datos y Reducción de Dimensionalidad
-Para simplificar grandes volúmenes de datos sin perder información significativa, se emplean técnicas de extracción de características [@russell2018machine]. El **Análisis de Componentes Principales (PCA)** transforma variables correlacionadas en un conjunto menor de variables no correlacionadas llamadas componentes principales [@fernandez2023modelos]. Asimismo, la **Descomposición en Valores Singulares (SVD)** es una herramienta matemática esencial para la factorización de matrices y la compresión de datos [@fernandez2023modelos].
+6. **Validación:** Se aplicaron pruebas de significancia estadística (t de Student) para verificar las hipótesis planteadas y confirmar que las diferencias observadas entre modelos y factores explicativos son coherentes con la realidad del fenómeno estudiado.
 
 

@@ -2,7 +2,7 @@
 
 El análisis cuantitativo de las variables disponibles en el dataset es fundamental para justificar la estructura de entrada de los modelos de inteligencia artificial y su preprocesamiento.
 
-## 1. Estructura y Variables Disponibles
+## Estructura y Variables Disponibles
 
 El conjunto de datos de entrenamiento definitivo consta de un total de **50,000** batallas competitivas estructuradas cronológicamente mediante la variable de estampa temporal `battleTime`. El dataset se caracteriza por poseer variables de diferentes tipos de datos:
 
@@ -21,7 +21,7 @@ El conjunto de datos de entrenamiento definitivo consta de un total de **50,000*
 
 ---
 
-## 2. Resultados del Análisis Global y Meso
+## Resultados del Análisis Global y Meso
 
 Al procesar la totalidad del conjunto de datos e investigar las estadísticas descriptivas consolidadas, se obtienen las siguientes distribuciones y correlaciones:
 

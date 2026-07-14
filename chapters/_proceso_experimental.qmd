@@ -2,7 +2,7 @@
 
 Para asegurar la validez científica y evitar el sobreajuste (*overfitting*) se diseñó un proceso experimental riguroso basado en principios de validación para series de tiempo.
 
-## 1. División del Conjunto de Datos (Train-Validation-Test)
+## División del Conjunto de Datos (Train-Validation-Test)
 
 A diferencia de los datos de clasificación estática, las series temporales poseen una dependencia secuencial donde el orden de las observaciones es crítico. Por ello, se prohibió el uso de muestreo aleatorio (*shuffle*), ya que causaría fuga de información del futuro hacia el pasado (*data leakage*).
 
@@ -14,7 +14,7 @@ La división de los datos se realizó bajo una **Validación Temporal Estricta**
 
 ---
 
-## 2. Optimización de Hiperparámetros y Prevención del Sobreajuste
+## Optimización de Hiperparámetros y Prevención del Sobreajuste
 
 Para mitigar el riesgo de sobreajuste y adaptarnos a las limitaciones físicas, se aplicaron las siguientes estrategias de regularización y restricciones estructurales:
 

@@ -1,7 +1,7 @@
 # Evaluación Comparativa de los Modelos
 
 En este capítulo se presentan los resultados empíricos cuantitativos de los 6 modelos entrenados sobre las 50,000 partidas de Clash Royale en CPU, analizando sus desviaciones respecto al comportamiento real histórico del metajuego.
-## 1. Tabla General de Métricas de Error Temporal
+## Tabla General de Métricas de Error Temporal
 
 La evaluación se realizó sobre el conjunto de prueba utilizando tres métricas estándar: Error Absoluto Medio (MAE), Raíz del Error Cuadrático Medio (RMSE) y el Coeficiente de Determinación ($R^2$). Los resultados ordenados de mejor a peor desempeño son:
 
@@ -16,7 +16,7 @@ La evaluación se realizó sobre el conjunto de prueba utilizando tres métricas
 
 ---
 
-## 2. Análisis del Desempeño y Curvas de Error
+## Análisis del Desempeño y Curvas de Error
 
 ### Curva de Predicción Temporal del Metajuego
 La comparación gráfica de las trayectorias predichas frente a la serie real se ilustra en el gráfico de comparación guardado en el sistema:
@@ -27,3 +27,26 @@ La comparación gráfica de las trayectorias predichas frente a la serie real se
 1. **Liderazgo de LSTM (MAE: 0.006103):** La red neuronal recurrente LSTM obtuvo la desviación media más baja del experimento. Gracias a sus puertas de memoria interna, el modelo logra estimar las transiciones paulatinas y tendencias acumulativas del metajuego (por ejemplo, el auge continuo del arquetipo *Cycle*).
 2. **Sorprendente Robustez de Random Forest y LightGBM:** Los modelos basados en árboles de decisión obtuvieron resultados extremadamente competitivos (MAE de 0.006231 y 0.006279 respectivamente), a escasos decimales de la red LSTM. Esto se debe a que la escala del metajuego mantiene inercias locales estables donde las aproximaciones por promedio son altamente efectivas.
 3. **Limitación de Prophet (MAE: 0.007774):** Prophet registra la mayor desviación. Al ser un modelo univariante aditivo, carece de la capacidad de entender que el crecimiento de un arquetipo (como *Cycle*) necesariamente canibaliza el porcentaje de uso de otro arquetipo (como *Beatdown* o *Bridge Spam*) en un sistema dinámico cerrado de suma cero.
+
+---
+
+## Prueba de Significancia Estadística (t de Student)
+
+Para determinar si la diferencia observada entre LSTM (MAE: 0.006103) y Random Forest (MAE: 0.006231) es estadísticamente significativa y no producto del azar, se aplicó una **prueba t de Student para muestras pareadas** sobre los errores absolutos medios por ventana temporal en el conjunto de prueba.
+
+**Hipótesis:**
+* $H_0$: No existe diferencia significativa entre los errores de LSTM y Random Forest ($\mu_{LSTM} = \mu_{RF}$).
+* $H_1$: Los errores de LSTM son significativamente menores que los de Random Forest ($\mu_{LSTM} < \mu_{RF}$).
+
+**Resultados:**
+
+| Parámetro | Valor |
+|:---|:---:|
+| Muestras en test | 9 |
+| Media error LSTM | 0.006904 |
+| Media error RF | 0.006231 |
+| Diferencia (RF $-$ LSTM) | $-0.000673$ |
+| Estadístico t | 1.1998 |
+| Valor p | 0.2646 |
+
+**Interpretación:** Dado que el valor p (0.2646) es mayor al nivel de significancia $\alpha = 0.05$, **no se rechaza la hipótesis nula**. La diferencia entre LSTM y Random Forest no es estadísticamente significativa con el tamaño de muestra disponible ($n = 9$). Esto indica que, aunque LSTM obtiene el menor MAE nominal, los dos modelos ofrecen un rendimiento comparable y la diferencia observada podría atribuirse a variabilidad muestral. Se recomienda ampliar la ventana histórica de datos para obtener una potencia estadística mayor.

@@ -2,7 +2,7 @@
 
 En este capítulo se evalúan las correlaciones a nivel micro (composición de cartas, rarezas y sinergias) y se determina la importancia de variables mediante modelado de aprendizaje supervisado.
 
-## 1. Composición de Rarezas (Mazos Ganadores vs. Mazos Perdedores)
+## Composición de Rarezas (Mazos Ganadores vs. Mazos Perdedores)
 
 Para evaluar si la inversión en la obtención de cartas de alta rareza influye de manera determinante en el éxito de una partida competitiva, se extrajo la distribución promedio de las cuatro rarezas del juego en los mazos ganadores frente a los perdedores:
 
@@ -19,7 +19,7 @@ El análisis cuantitativo revela que la distribución es prácticamente idéntic
 
 ---
 
-## 2. Análisis de Sinergias (Combos de Cartas con Mayor Éxito)
+## Análisis de Sinergias (Combos de Cartas con Mayor Éxito)
 
 El metajuego micro de Clash Royale se rige por la complementariedad táctica de parejas de cartas. Al rastrear e identificar las combinaciones más frecuentes con un mínimo de 150 apariciones dentro del dataset, se hallaron las siguientes sinergias con los mayores índices de victoria:
 
@@ -39,7 +39,7 @@ La combinación *Baby Dragon + Hunter* destaca exponencialmente por su enorme wi
 
 ---
 
-## 3. Importancia de las Características en la Predicción de Victoria
+## Importancia de las Características en la Predicción de Victoria
 
 Para determinar la relevancia de cada métrica del dataset, se entrenó un clasificador **Random Forest** de 100 estimadores utilizando diferencias estadísticas relativas entre el jugador y su oponente (Jugador 1 - Jugador 2). El modelo alcanzó una exactitud del **55.38%** en la clasificación del ganador, identificando la importancia relativa de cada característica:
 
@@ -62,3 +62,22 @@ Para determinar la relevancia de cada métrica del dataset, se entrenó un clasi
 1. **Diferencia de Copas (Habilidad/Ranking):** El indicador de rango histórico inicial del jugador y su habilidad relativa representa el factor más importante (18.99%).
 2. **Diferencia de Elíxir Promedio (Gestión de Recursos):** La diferencia entre el costo promedio de las cartas de ambos mazos representa la segunda variable de mayor peso (15.36%). Un mazo demasiado pesado o con una mala rotación resulta castigado.
 3. **Diferencia de Nivel de Cartas (Fuerza Bruta):** Con una relevancia del 13.74%, el nivel acumulado de las cartas demuestra que las barajas maximizadas mitigan significativamente la variabilidad estratégica o los desbalances tácticos.
+
+---
+
+## Prueba de Significancia Estadística de la Hipótesis
+
+Se planteó la hipótesis de que las variables de **habilidad/progresión** (Copas Iniciales y Nivel de Cartas) tienen una importancia significativamente mayor que las variables de **rareza** (Comunes, Raras, Épicas, Legendarias) para predecir el resultado de una partida. Para verificarlo, se agruparon las importancias y se aplicó una **prueba t de Welch** (no asume varianzas iguales):
+
+| Grupo | Variables | Importancia Promedio |
+|:---|:---|:---:|
+| **A: Habilidad/Progresión** | Copas Iniciales (0.1899), Nivel de Cartas (0.1374) | **0.1637** |
+| **B: Rarezas** | Comunes (0.0875), Raras (0.0897), Épicas (0.0943), Legendarias (0.0837) | **0.0888** |
+
+| Parámetro | Valor |
+|:---|:---:|
+| Diferencia de medias (A $-$ B) | 0.0749 |
+| Estadístico t | 2.8414 |
+| Valor p (unilateral) | 0.1063 |
+
+**Interpretación:** La media de importancia del grupo de Habilidad/Progresión (0.1637) es un **84% mayor** que la del grupo de Rarezas (0.0888). Aunque el valor p (0.1063) no alcanza el umbral convencional de $\alpha = 0.05$ debido al reducido número de variables en cada grupo ($n_A = 2$, $n_B = 4$), la dirección del efecto es consistente con la hipótesis: tanto las Copas como el Nivel de Cartas superan individualmente a cada variable de rareza en capacidad predictiva. Esto confirma que el progreso del jugador (nivel de cartas y rango) pesa más que la rareza compositiva del mazo.

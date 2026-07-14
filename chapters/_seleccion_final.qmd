@@ -2,7 +2,7 @@
 
 En este capítulo se selecciona y justifica el mejor sistema predictivo para el metajuego de Clash Royale, describiendo su arquitectura técnica adaptada a entornos de recursos limitados.
 
-## 1. Selección y Justificación Científica del Modelo Final
+## Selección y Justificación Científica del Modelo Final
 
 En base a la evidencia experimental recolectada, se determina que el mejor sistema predictivo es un **Ensamble Híbrido Secuencial (LSTM + LightGBM)**:
 

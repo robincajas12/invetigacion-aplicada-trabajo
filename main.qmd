@@ -36,6 +36,8 @@ execute:
 
 {{< include chapters/_capitulo1.qmd >}}
 
+{{< include chapters/_marco_teorico.qmd >}}
+
 {{< include chapters/_resultados.qmd >}}
 
 {{< include chapters/_resultados_avanzados.qmd >}}

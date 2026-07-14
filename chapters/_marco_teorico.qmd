@@ -1,0 +1,112 @@
+# Marco Teórico
+
+El presente marco teórico fundamenta los constructos conceptuales, estadísticos y computacionales que sustentan la investigación, integrando disciplinas como la **Teoría de Juegos**, la **Ciencia de Datos**, el **Aprendizaje Automático** y el **Análisis de Series Temporales**.
+
+## Teoría de Juegos y Decisiones Estratégicas
+
+La **Teoría de Juegos** se define como el análisis riguroso y sistemático de situaciones de conflicto y cooperación en las que interactúan individuos racionales [@cerda2004teoria]. En estos escenarios, cada jugador busca maximizar su **función de utilidad**, pero el resultado final no depende únicamente de sus propias acciones, sino de las decisiones tomadas por los demás participantes [@cerda2004teoria].
+
+Un concepto central es el **Equilibrio de Nash**, un perfil de estrategias en el cual la elección de cada jugador es una respuesta óptima a las estrategias del resto; de este modo, ningún individuo tiene incentivos para desviarse de su decisión de manera unilateral [@cerda2004teoria]. Este marco permite predecir comportamientos en entornos competitivos donde las reglas son conocidas por todos los agentes [@cerda2004teoria].
+
+En el contexto de los videojuegos competitivos como *Clash Royale*, la Teoría de Juegos permite modelar las interacciones estratégicas entre jugadores que eligen mazos y arquetipos buscando maximizar su probabilidad de victoria, considerando las respuestas esperadas de sus oponentes [@peng2024esports].
+
+## Fundamentos del Aprendizaje Automático (Machine Learning)
+
+La **Ciencia de Datos** se fundamenta en principios que guían la extracción de conocimiento a partir de los datos [@fernandez2023modelos]. Dentro de esta disciplina, el **Aprendizaje Automático** confiere a los sistemas la capacidad de aprender de la experiencia para mejorar su desempeño en tareas específicas sin ser programados explícitamente [@russell2018machine; @fernandez2023modelos].
+
+Según la naturaleza de los datos, los sistemas se clasifican en:
+
+* **Aprendizaje Supervisado:** El modelo se entrena con datos etiquetados (entradas y salidas deseadas) para aprender una función de mapeo que permita realizar tareas de **clasificación** o **regresión** [@russell2018machine; @fernandez2023modelos].
+
+* **Aprendizaje No Supervisado:** El algoritmo identifica estructuras ocultas en datos no etiquetados, destacando técnicas como el **Clustering** (agrupamiento de observaciones similares) y la **reducción de dimensionalidad** [@russell2018machine; @fernandez2023modelos].
+
+## Series Temporales y Pronóstico
+
+Una **serie temporal** es una secuencia de observaciones numéricas ordenadas cronológicamente, donde cada valor depende de los anteriores y/o de factores externos. El **análisis de series temporales** estudia los patrones de tendencia, estacionalidad y ruido para generar pronósticos futuros [@hyndman2018forecasting].
+
+Los componentes fundamentales de una serie temporal son:
+
+* **Tendencia (Trend):** Dirección a largo plazo de los datos (creciente, decreciente o estable).
+* **Estacionalidad (Seasonality):** Fluctuaciones periódicas que se repiten en intervalos regulares.
+* **Ruido (Noise):** Variación aleatoria no explicada por los componentes anteriores.
+
+En el metajuego de *Clash Royale*, las series temporales representan la evolución de las tasas de uso y victoria de los arquetipos a lo largo del tiempo, donde cada ventana temporal contiene las proporciones de cada estrategia competitiva [@hyndman2018forecasting].
+
+## Redes Neuronales Recurrentes (RNN)
+
+Las **Redes Neuronales Recurrentes (RNN)** son una clase de redes neuronales diseñadas para procesar secuencias de datos, donde la información de pasos anteriores se propaga a través de una estado oculto (*hidden state*) que funciona como memoria de corto plazo [@russell2018machine].
+
+Sin embargo, las RNN estándar sufren el problema del **desvanecimiento del gradiente** (*vanishing gradient*): durante el entrenamiento por retropropagación a través del tiempo (*Backpropagation Through Time*, BPTT), los gradientes se reducen exponencialmente a medida que se propagan hacia atrás, dificultando el aprendizaje de dependencias a largo plazo [@bengio1994learning].
+
+### Long Short-Term Memory (LSTM)
+
+Las **LSTM** fueron propuestas por Hochreiter y Schmidhuber en 1997 para resolver el problema del desvanecimiento del gradiente [@hochreiter1997lstm]. Una celda LSTM utiliza tres compuertas (*gates*) para controlar el flujo de información:
+
+* **Compuerta de olvido (*forget gate*):** Decide qué información descartar del estado de celda anterior.
+* **Compuerta de entrada (*input gate*):** Decide qué nueva información almacenar en el estado de celda.
+* **Compuerta de salida (*output gate*):** Decide qué parte del estado de celda outputear como estado oculto.
+
+Esta arquitectura permite a las LSTMs capturar dependencias a largo plazo en secuencias de datos, siendo superiores a las RNN estándar en tareas como reconocimiento de voz, traducción automática y pronóstico de series temporales [@hochreiter1997lstm; @chung2014gru].
+
+### Gated Recurrent Unit (GRU)
+
+Las **GRU** fueron propuestas como una simplificación de las LSTM, combinando las compuertas de olvido y entrada en una única compuerta de actualización, y eliminando el estado de celda separado [@chung2014gru]. Utiliza dos compuertas:
+
+* **Compuerta de reinicio (*reset gate*):** Controla cuánta información anterior ignorar al calcular el nuevo estado candidato.
+* **Compuerta de actualización (*update gate*):** Decide cuánto del estado anterior conservar versus cuánto actualizar con el nuevo candidato.
+
+Las GRU tienen menos parámetros que las LSTM, lo que las hace más rápidas de entrenar manteniendo una capacidad predictiva comparable en muchos problemas [@chung2014gru].
+
+## Modelos de Regresión y Complejidad del Modelo
+
+Para la predicción de variables continuas, se emplean modelos de **regresión lineal**, que calculan una suma pesada de las características de entrada junto con una constante de tendencia [@russell2018machine]. En conjuntos de datos complejos, se utiliza la **regresión polinomial** para ajustar funciones no lineales [@russell2018machine].
+
+Un desafío crítico es el **sobreajuste (*overfitting*)**, que ocurre cuando un modelo es demasiado complejo para la cantidad de datos disponibles, logrando un excelente desempeño en el entrenamiento pero fallando al generalizar en datos nuevos [@russell2018machine]. Para mitigar esto, se utilizan técnicas de **regularización** como la **Regresión Contraída (Ridge)** o la **Regresión Lasso**, que penalizan la complejidad del modelo añadiendo un peso a la función de costo [@russell2018machine].
+
+## Métodos de Ensamble
+
+Los **métodos ensemble** combinan múltiples modelos predictivos para generar una predicción final más precisa y robusta que la de un experto individual [@fernandez2023modelos]. Entre las técnicas más utilizadas se encuentran:
+
+### Bagging (Bootstrap Aggregating)
+
+Entrena múltiples modelos independientes en subconjuntos de datos aleatorios con reemplazo, promediando sus predicciones para reducir la varianza. El ejemplo más representativo es **Random Forest** [@fernandez2023modelos; @russell2018machine].
+
+### Gradient Boosting
+
+Construye modelos de forma secuencial, donde cada nuevo árbol corrige los errores residuales del anterior mediante optimización por descenso de gradiente [@fernandez2023modelos]. Las implementaciones más destacadas son:
+
+* **XGBoost** (*eXtreme Gradient Boosting*): Sistema escalable de gradient boosting propuesto por Chen y Guestrin en 2016, que incorpora regularización L1/L2 y manejo eficiente de datos dispersos [@chen2016xgboost].
+
+* **LightGBM** (*Light Gradient Boosting Machine*): Algoritmo propuesto por Ke et al. en 2017 que utiliza muestreo unidireccional basado en gradiente (GOSS) y empaquetado de características exclusivas (EFB) para acelerar el entrenamiento hasta 20 veces respecto a XGBoost sin perder precisión [@ke2017lightgbm].
+
+## Modelos de Pronóstico Temporal
+
+### Facebook Prophet
+
+**Prophet** es un modelo de pronóstico temporal desarrollado por Facebook, basado en un modelo aditivo que descompone la serie en componentes de tendencia (lineal o no lineal), estacionalidades (diaria, semanal, anual) y efectos de días festivos [@taylor2018prophet]. Es robusto ante valores atípicos y cambios estructurales, y está diseñado para series temporales con patrones estacionales fuertes y varios periodos de datos históricos. Su función principal es:
+
+$$y(t) = g(t) + s(t) + h(t) + \epsilon_t$$
+
+Donde $g(t)$ representa la tendencia, $s(t)$ la estacionalidad, $h(t)$ los efectos de festivos y $\epsilon_t$ el ruido [@taylor2018prophet].
+
+## Métricas de Evaluación de Modelos
+
+Para comparar el rendimiento de los modelos predictivos se utilizan las siguientes métricas estándar [@hyndman2018forecasting]:
+
+* **Error Absoluto Medio (MAE):** Promedio de los errores absolutos entre las predicciones y los valores reales. Mide la magnitud promedio del error.
+
+$$MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|$$
+
+* **Raíz del Error Cuadrático Medio (RMSE):** Raíz cuadrada del promedio de los errores al cuadrado. Penaliza más los errores grandes.
+
+$$RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}$$
+
+* **Coeficiente de Determinación ($R^2$):** Proporción de la varianza total explicada por el modelo. Varía entre 0 y 1, donde 1 indica ajuste perfecto.
+
+$$R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}$$
+
+## Análisis de eSports y Minería de Datos
+
+El **análisis de eSports** (*eSports Analytics*) aplica técnicas de ciencia de datos y aprendizaje automático para extraer conocimiento de los datos generados por videojuegos competitivos [@peng2024esports]. En juegos como *Clash Royale*, los datos disponibles incluyen composición de mazos, niveles de cartas, tasas de uso, resultados de partidas y métricas de rendimiento.
+
+La **minería de datos** consiste en aplicar algoritmos de descubrimiento de conocimiento sobre grandes volúmenes de datos para identificar patrones, correlaciones y tendencias útiles para la toma de decisiones [@russell2018machine]. En este estudio, la minería de datos se utiliza para clasificar arquetipos, identificar sinergias entre cartas y determinar los factores que más influyen en la victoria.
