@@ -1,4 +1,4 @@
-# Capítulo 4: Selección de Modelos Candidatos y Justificación Metodológica
+# Selección de Modelos Candidatos y Justificación Metodológica
 
 Para predecir las series temporales de uso y win rates de los arquetipos de Clash Royale de forma robusta e interpretable, se evaluaron y compararon 6 modelos candidatos representativos de diferentes familias de algoritmos en ciencia de datos.
 
@@ -6,7 +6,7 @@ Para predecir las series temporales de uso y win rates de los arquetipos de Clas
 * **Funcionamiento:** Algoritmo de ensamble basado en el promedio de múltiples árboles de decisión independientes entrenados en subconjuntos de datos aleatorios con reemplazo (bagging).
 * **Ventajas:** Excelente resistencia al sobreajuste, no requiere supuestos de linealidad y es fácil de configurar.
 * **Desventajas:** Incapacidad absoluta para extrapolar tendencias fuera de los límites de los datos históricos de entrenamiento.
-* **Costo Computacional:** Bajo en CPU (adecuado para 8GB RAM).
+* **Costo Computacional:** Bajo en CPU
 * **Interpretabilidad:** Media-alta mediante la métrica de importancia de características.
 
 ## 2. XGBoost (Extreme Gradient Boosting)

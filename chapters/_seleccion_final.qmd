@@ -1,4 +1,4 @@
-# Capítulo 7: Modelo Final, Justificación Científica y Arquitectura
+# Modelo Final, Justificación Científica y Arquitectura
 
 En este capítulo se selecciona y justifica el mejor sistema predictivo para el metajuego de Clash Royale, describiendo su arquitectura técnica adaptada a entornos de recursos limitados.
 
@@ -12,25 +12,12 @@ En base a la evidencia experimental recolectada, se determina que el mejor siste
 
 ### Justificación de LightGBM (como Clasificador de Combates Complementario)
 Para mapear las predicciones agregadas de arquetipos hacia cartas dominantes y simulación de combates individuales, se acopla un clasificador LightGBM.
-1. **Eficiencia en CPU:** LightGBM requiere una fracción del costo computacional de XGBoost y entrena en milisegundos en 8GB de RAM.
+
+1. **Eficiencia en CPU:** LightGBM requiere una fracción del costo computacional de XGBoost y entrena en milisegundos.
+
 2. **Interpretabilidad de Atributos:** Permite descomponer la influencia de los niveles de cartas, las copas iniciales y la sinergia estructural del mazo.
 
 ---
-
-## 2. Arquitectura Completa del Sistema Predictivo
-
-El flujo de procesamiento del sistema de IA se estructura en cuatro módulos acoplados:
-
-```{mermaid}
-graph TD
-    A[API de Supercell / JSON de Batallas] --> B[Módulo de Ingesta y Clasificación]
-    B -->|Mapeo de Wincons| C[Series Temporales de Arquetipos]
-    B -->|Diferenciales de Atributos| D[Clasificador de Victoria LightGBM]
-    C --> E[Modelo Predictivo Recurrente LSTM]
-    E -->|Predicción de Tasa de Uso a Futuro| F[Simulador de Metajuego]
-    D -->|Simulación de Combates Uno-a-Uno| F
-    F --> G[Predicción de Tendencias y Cartas Dominantes]
-```
 
 ### Módulos del Sistema:
 1. **Módulo de Ingesta y Clasificación:** Consume los registros JSON crudos de batallas de la API oficial. Extrae las variables temporales, numéricas y categóricas. Utiliza diccionarios indexados en memoria RAM para asociar las IDs de cartas con condiciones de victoria en tiempo constante $O(1)$.

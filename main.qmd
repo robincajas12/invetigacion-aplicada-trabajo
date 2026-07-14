@@ -1,5 +1,5 @@
 ---
-title: "PREDICCIÓN DEL METAJUEGO EN CLASH ROYALE USANDO INTELIGENCIA ARTIFICIAL CON DATOS DE 2023-2026"
+title: "Predicción del metajuego en Clash Royale usando inteligencia artificial con datos de 2023-2026"
 author:
   - "Cajas Molina Robinson Stalin"
   - "Baraja Simbaña Cristian Paul"
