@@ -32,7 +32,6 @@ execute:
 
 \tableofcontents
 \newpage
-
 {{< include chapters/_resumen.qmd >}}
 
 {{< include chapters/_capitulo1.qmd >}}

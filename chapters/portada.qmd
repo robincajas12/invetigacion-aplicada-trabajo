@@ -1,4 +1,0 @@
-# hello
-```{python}
-print('uwuw')
-```
