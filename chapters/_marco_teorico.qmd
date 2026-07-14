@@ -8,7 +8,7 @@ La **Teoría de Juegos** se define como el análisis riguroso y sistemático de 
 
 Un concepto central es el **Equilibrio de Nash**, un perfil de estrategias en el cual la elección de cada jugador es una respuesta óptima a las estrategias del resto; de este modo, ningún individuo tiene incentivos para desviarse de su decisión de manera unilateral [@cerda2004teoria]. Este marco permite predecir comportamientos en entornos competitivos donde las reglas son conocidas por todos los agentes [@cerda2004teoria].
 
-En el contexto de los videojuegos competitivos como *Clash Royale*, la Teoría de Juegos permite modelar las interacciones estratégicas entre jugadores que eligen mazos y arquetipos buscando maximizar su probabilidad de victoria, considerando las respuestas esperadas de sus oponentes [@peng2024esports].
+En el contexto de los videojuegos competitivos como *Clash Royale*, la Teoría de Juegos permite modelar las interacciones estratégicas entre jugadores que eligen mazos y arquetipos buscando maximizar su probabilidad de victoria, considerando las respuestas esperadas de sus oponentes.
 
 ## Fundamentos del Aprendizaje Automático (Machine Learning)
 
@@ -36,26 +36,26 @@ En el metajuego de *Clash Royale*, las series temporales representan la evoluci�
 
 Las **Redes Neuronales Recurrentes (RNN)** son una clase de redes neuronales diseñadas para procesar secuencias de datos, donde la información de pasos anteriores se propaga a través de una estado oculto (*hidden state*) que funciona como memoria de corto plazo [@russell2018machine].
 
-Sin embargo, las RNN estándar sufren el problema del **desvanecimiento del gradiente** (*vanishing gradient*): durante el entrenamiento por retropropagación a través del tiempo (*Backpropagation Through Time*, BPTT), los gradientes se reducen exponencialmente a medida que se propagan hacia atrás, dificultando el aprendizaje de dependencias a largo plazo [@bengio1994learning].
+Sin embargo, las RNN estándar sufren el problema del **desvanecimiento del gradiente** (*vanishing gradient*): durante el entrenamiento por retropropagación a través del tiempo (*Backpropagation Through Time*, BPTT), los gradientes se reducen exponencialmente a medida que se propagan hacia atrás, dificultando el aprendizaje de dependencias a largo plazo.
 
 ### Long Short-Term Memory (LSTM)
 
-Las **LSTM** fueron propuestas por Hochreiter y Schmidhuber en 1997 para resolver el problema del desvanecimiento del gradiente [@hochreiter1997lstm]. Una celda LSTM utiliza tres compuertas (*gates*) para controlar el flujo de información:
+Las **LSTM** fueron propuestas por Hochreiter y Schmidhuber en 1997 para resolver el problema del desvanecimiento del gradiente. Una celda LSTM utiliza tres compuertas (*gates*) para controlar el flujo de información:
 
 * **Compuerta de olvido (*forget gate*):** Decide qué información descartar del estado de celda anterior.
 * **Compuerta de entrada (*input gate*):** Decide qué nueva información almacenar en el estado de celda.
 * **Compuerta de salida (*output gate*):** Decide qué parte del estado de celda outputear como estado oculto.
 
-Esta arquitectura permite a las LSTMs capturar dependencias a largo plazo en secuencias de datos, siendo superiores a las RNN estándar en tareas como reconocimiento de voz, traducción automática y pronóstico de series temporales [@hochreiter1997lstm; @chung2014gru].
+Esta arquitectura permite a las LSTMs capturar dependencias a largo plazo en secuencias de datos, siendo superiores a las RNN estándar en tareas como reconocimiento de voz, traducción automática y pronóstico de series temporales.
 
 ### Gated Recurrent Unit (GRU)
 
-Las **GRU** fueron propuestas como una simplificación de las LSTM, combinando las compuertas de olvido y entrada en una única compuerta de actualización, y eliminando el estado de celda separado [@chung2014gru]. Utiliza dos compuertas:
+Las **GRU** fueron propuestas como una simplificación de las LSTM, combinando las compuertas de olvido y entrada en una única compuerta de actualización, y eliminando el estado de celda separado. Utiliza dos compuertas:
 
 * **Compuerta de reinicio (*reset gate*):** Controla cuánta información anterior ignorar al calcular el nuevo estado candidato.
 * **Compuerta de actualización (*update gate*):** Decide cuánto del estado anterior conservar versus cuánto actualizar con el nuevo candidato.
 
-Las GRU tienen menos parámetros que las LSTM, lo que las hace más rápidas de entrenar manteniendo una capacidad predictiva comparable en muchos problemas [@chung2014gru].
+Las GRU tienen menos parámetros que las LSTM, lo que las hace más rápidas de entrenar manteniendo una capacidad predictiva comparable en muchos problemas.
 
 ## Modelos de Regresión y Complejidad del Modelo
 
@@ -69,25 +69,25 @@ Los **métodos ensemble** combinan múltiples modelos predictivos para generar u
 
 ### Bagging (Bootstrap Aggregating)
 
-Entrena múltiples modelos independientes en subconjuntos de datos aleatorios con reemplazo, promediando sus predicciones para reducir la varianza. El ejemplo más representativo es **Random Forest** [@fernandez2023modelos; @russell2018machine].
+Entrena múltiples modelos independientes en subconjuntos de datos aleatorios con reemplazo, promediando sus predicciones para reducir la varianza. El ejemplo más representativo es **Random Forest** propuesto por Breiman en 2001 [@randomforestbreiman; @fernandez2023modelos].
 
 ### Gradient Boosting
 
 Construye modelos de forma secuencial, donde cada nuevo árbol corrige los errores residuales del anterior mediante optimización por descenso de gradiente [@fernandez2023modelos]. Las implementaciones más destacadas son:
 
-* **XGBoost** (*eXtreme Gradient Boosting*): Sistema escalable de gradient boosting propuesto por Chen y Guestrin en 2016, que incorpora regularización L1/L2 y manejo eficiente de datos dispersos [@chen2016xgboost].
+* **XGBoost** (*eXtreme Gradient Boosting*): Sistema escalable de gradient boosting propuesto por Chen y Guestrin en 2016, que incorpora regularización L1/L2 y manejo eficiente de datos dispersos.
 
-* **LightGBM** (*Light Gradient Boosting Machine*): Algoritmo propuesto por Ke et al. en 2017 que utiliza muestreo unidireccional basado en gradiente (GOSS) y empaquetado de características exclusivas (EFB) para acelerar el entrenamiento hasta 20 veces respecto a XGBoost sin perder precisión [@ke2017lightgbm].
+* **LightGBM** (*Light Gradient Boosting Machine*): Algoritmo propuesto por Ke et al. en 2017 que utiliza muestreo unidireccional basado en gradiente (GOSS) y empaquetado de características exclusivas (EFB) para acelerar el entrenamiento hasta 20 veces respecto a XGBoost sin perder precisión.
 
 ## Modelos de Pronóstico Temporal
 
 ### Facebook Prophet
 
-**Prophet** es un modelo de pronóstico temporal desarrollado por Facebook, basado en un modelo aditivo que descompone la serie en componentes de tendencia (lineal o no lineal), estacionalidades (diaria, semanal, anual) y efectos de días festivos [@taylor2018prophet]. Es robusto ante valores atípicos y cambios estructurales, y está diseñado para series temporales con patrones estacionales fuertes y varios periodos de datos históricos. Su función principal es:
+**Prophet** es un modelo de pronóstico temporal desarrollado por Facebook, basado en un modelo aditivo que descompone la serie en componentes de tendencia (lineal o no lineal), estacionalidades (diaria, semanal, anual) y efectos de días festivos. Es robusto ante valores atípicos y cambios estructurales, y está diseñado para series temporales con patrones estacionales fuertes y varios periodos de datos históricos. Su función principal es:
 
 $$y(t) = g(t) + s(t) + h(t) + \epsilon_t$$
 
-Donde $g(t)$ representa la tendencia, $s(t)$ la estacionalidad, $h(t)$ los efectos de festivos y $\epsilon_t$ el ruido [@taylor2018prophet].
+Donde $g(t)$ representa la tendencia, $s(t)$ la estacionalidad, $h(t)$ los efectos de festivos y $\epsilon_t$ el ruido [@prophetdoc].
 
 ## Métricas de Evaluación de Modelos
 
@@ -107,6 +107,6 @@ $$R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar
 
 ## Análisis de eSports y Minería de Datos
 
-El **análisis de eSports** (*eSports Analytics*) aplica técnicas de ciencia de datos y aprendizaje automático para extraer conocimiento de los datos generados por videojuegos competitivos [@peng2024esports]. En juegos como *Clash Royale*, los datos disponibles incluyen composición de mazos, niveles de cartas, tasas de uso, resultados de partidas y métricas de rendimiento.
+El **análisis de eSports** (*eSports Analytics*) aplica técnicas de ciencia de datos y aprendizaje automático para extraer conocimiento de los datos generados por videojuegos competitivos. En juegos como *Clash Royale*, los datos disponibles incluyen composición de mazos, niveles de cartas, tasas de uso, resultados de partidas y métricas de rendimiento.
 
 La **minería de datos** consiste en aplicar algoritmos de descubrimiento de conocimiento sobre grandes volúmenes de datos para identificar patrones, correlaciones y tendencias útiles para la toma de decisiones [@russell2018machine]. En este estudio, la minería de datos se utiliza para clasificar arquetipos, identificar sinergias entre cartas y determinar los factores que más influyen en la victoria.

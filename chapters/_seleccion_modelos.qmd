@@ -3,42 +3,42 @@
 Para predecir las series temporales de uso y win rates de los arquetipos de Clash Royale de forma robusta e interpretable, se evaluaron y compararon 6 modelos candidatos representativos de diferentes familias de algoritmos en ciencia de datos.
 
 ## Random Forest (Regresor)
-* **Funcionamiento:** Algoritmo de ensamble basado en el promedio de múltiples árboles de decisión independientes entrenados en subconjuntos de datos aleatorios con reemplazo (bagging).
+* **Funcionamiento:** Algoritmo de ensamble basado en el promedio de múltiples árboles de decisión independientes entrenados en subconjuntos de datos aleatorios con reemplazo (bagging) [@randomforestbreiman].
 * **Ventajas:** Excelente resistencia al sobreajuste, no requiere supuestos de linealidad y es fácil de configurar.
 * **Desventajas:** Incapacidad absoluta para extrapolar tendencias fuera de los límites de los datos históricos de entrenamiento.
 * **Costo Computacional:** Bajo en CPU
 * **Interpretabilidad:** Media-alta mediante la métrica de importancia de características.
 
 ## XGBoost (Extreme Gradient Boosting)
-* **Funcionamiento:** Ensamble de árboles de decisión aditivos entrenados de manera secuencial para corregir iterativamente los errores residuales del árbol anterior utilizando optimización por descenso de gradiente.
+* **Funcionamiento:** Ensamble de árboles de decisión aditivos entrenados de manera secuencial para corregir iterativamente los errores residuales del árbol anterior utilizando optimización por descenso de gradiente [@xgboostdoc].
 * **Ventajas:** Rendimiento predictivo sobresaliente, optimizado en regularización L1/L2 para evitar sobreajuste.
 * **Desventajas:** Sensible a hiperparámetros y requiere modelado multiobjetivo secuencial por separado.
 * **Costo Computacional:** Moderado en CPU.
 * **Interpretabilidad:** Media.
 
 ## LightGBM (Light Gradient Boosting Machine)
-* **Funcionamiento:** Variante optimizada de Gradient Boosting que divide los árboles por hojas (Leaf-wise) en lugar de niveles (Level-wise), utilizando histogramas discretos de características.
+* **Funcionamiento:** Variante optimizada de Gradient Boosting que divide los árboles por hojas (Leaf-wise) en lugar de niveles (Level-wise), utilizando histogramas discretos de características [@lightgbmdoc].
 * **Ventajas:** Velocidad de entrenamiento extremadamente rápida y consumo mínimo de memoria RAM, ideal para CPUs hogareñas sin GPU.
 * **Desventajas:** Propenso a sobreajustar en conjuntos de datos pequeños si no se restringe la profundidad máxima de hojas.
 * **Costo Computacional:** Extremadamente bajo.
 * **Interpretabilidad:** Media.
 
 ## LSTM (Long Short-Term Memory)
-* **Funcionamiento:** Red neuronal recurrente (RNN) que utiliza celdas con puertas de entrada, salida y olvido para controlar el flujo de información a largo plazo, mitigando el problema del desvanecimiento del gradiente.
+* **Funcionamiento:** Red neuronal recurrente (RNN) que utiliza celdas con puertas de entrada, salida y olvido para controlar el flujo de información a largo plazo, mitigando el problema del desvanecimiento del gradiente [@lstmtutorial].
 * **Ventajas:** Capacidad nativa para capturar dependencias y patrones secuenciales complejos a lo largo del tiempo.
 * **Desventajas:** Requisitos de hardware elevados, propenso a sobreajustar si la red es muy profunda y posee baja interpretabilidad.
 * **Costo Computacional:** Alto en entrenamiento CPU (se limitó a un hilo para evitar sobrecalentamiento).
 * **Interpretabilidad:** Baja (caja negra).
 
 ## GRU (Gated Recurrent Unit)
-* **Funcionamiento:** Variante simplificada de la red LSTM que unifica las compuertas de olvido y entrada en una única puerta de actualización, reduciendo el número de parámetros a entrenar.
+* **Funcionamiento:** Variante simplificada de la red LSTM que unifica las compuertas de olvido y entrada en una única puerta de actualización, reduciendo el número de parámetros a entrenar [@lstmtutorial].
 * **Ventajas:** Entrenamiento más rápido que una red LSTM manteniendo una capacidad predictiva similar en conjuntos de datos de tamaño moderado.
 * **Desventajas:** Menor flexibilidad estructural en secuencias sumamente largas comparada con LSTM.
 * **Costo Computacional:** Moderado-Alto.
 * **Interpretabilidad:** Baja.
 
 ## Prophet (Facebook)
-* **Funcionamiento:** Modelo aditivo de pronóstico temporal basado en la descomposición de la serie en componentes de tendencia lineal/no lineal, estacionalidades (diaria, semanal, anual) y efectos de días festivos o parches.
+* **Funcionamiento:** Modelo aditivo de pronóstico temporal basado en la descomposición de la serie en componentes de tendencia lineal/no lineal, estacionalidades (diaria, semanal, anual) y efectos de días festivos o parches [@prophetdoc].
 * **Ventajas:** Robusto ante valores atípicos y cambios estructurales, fácil de sintonizar incorporando conocimiento de dominio.
 * **Desventajas:** Asume que la serie temporal puede descomponerse de forma aditiva y presenta dificultades para modelar dinámicas multivariantes interconectadas de forma nativa.
 * **Costo Computacional:** Bajo.

@@ -1,6 +1,6 @@
 # Proceso Experimental y Validación Temporal
 
-Para asegurar la validez científica y evitar el sobreajuste (*overfitting*) se diseñó un proceso experimental riguroso basado en principios de validación para series de tiempo.
+Para asegurar la validez científica y evitar el sobreajuste (*overfitting*) se diseñó un proceso experimental riguroso basado en principios de validación para series de tiempo [@hyndman2018forecasting; @walkforward].
 
 ## División del Conjunto de Datos (Train-Validation-Test)
 

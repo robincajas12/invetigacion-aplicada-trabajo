@@ -4,7 +4,7 @@ En este capítulo se selecciona y justifica el mejor sistema predictivo para el 
 
 ## Selección y Justificación Científica del Modelo Final
 
-En base a la evidencia experimental recolectada, se determina que el mejor sistema predictivo es un **Ensamble Híbrido Secuencial (LSTM + LightGBM)**:
+En base a la evidencia experimental recolectada, se determina que el mejor sistema predictivo es un **Ensamble Híbrido Secuencial (LSTM + LightGBM)** [@lstmtutorial; @lightgbmdoc]:
 
 ### Justificación de la Red LSTM
 1. **Memoria de Largo Plazo:** La red LSTM demostró el menor error global de predicción (MAE: 0.006103) debido a su capacidad para retener dinámicas acumulativas temporales. Esto resulta crítico para modelar el comportamiento de los jugadores, quienes no cambian instantáneamente de mazo el día de un parche, sino que transicionan de forma progresiva a lo largo de las semanas.
@@ -23,4 +23,4 @@ Para mapear las predicciones agregadas de arquetipos hacia cartas dominantes y s
 1. **Módulo de Ingesta y Clasificación:** Consume los registros JSON crudos de batallas de la API oficial. Extrae las variables temporales, numéricas y categóricas. Utiliza diccionarios indexados en memoria RAM para asociar las IDs de cartas con condiciones de victoria en tiempo constante $O(1)$.
 2. **Módulo de Series Temporales (LSTM):** Recibe las series temporales de uso y efectividad agregadas en ventanas de 1,000 batallas. Utiliza la red LSTM entrenada para proyectar las tasas de uso futuras ante la inercia de la temporada actual.
 3. **Módulo Clasificador (LightGBM):** Modela la probabilidad de victoria de cualquier enfrentamiento de mazos en base a diferencias relativas de nivel, copas, costo de elíxir y sinergias identificadas (como el combo *Baby Dragon + Hunter*).
-4. **Simulador de Metajuego (Monte Carlo):** Cruza las predicciones de popularidad de la LSTM con las probabilidades de victoria del LightGBM para identificar qué mazos sufrirán un colapso en su win rate tras un parche de balance y qué cartas emergerán como dominantes.
+4. **Simulador de Metajuego (Monte Carlo):** Cruza las predicciones de popularidad de la LSTM con las probabilidades de victoria del LightGBM para identificar qué mazos sufrirán un colapso en su win rate tras un parche de balance y qué cartas emergerán como dominantes [@montecarlosim].

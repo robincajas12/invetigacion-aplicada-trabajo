@@ -13,6 +13,9 @@ format:
       - margin=2.54cm
     number-sections: true
     colorlinks: true
+    linkcolor: black
+    urlcolor: black
+    citecolor: black
     toc: false
     mainfont: "Times New Roman"
     pdf-engine: xelatex
@@ -38,13 +41,13 @@ execute:
 
 {{< include chapters/_marco_teorico.qmd >}}
 
-{{< include chapters/_resultados.qmd >}}
-
-{{< include chapters/_resultados_avanzados.qmd >}}
-
 {{< include chapters/_seleccion_modelos.qmd >}}
 
 {{< include chapters/_proceso_experimental.qmd >}}
+
+{{< include chapters/_resultados.qmd >}}
+
+{{< include chapters/_resultados_avanzados.qmd >}}
 
 {{< include chapters/_evaluacion.qmd >}}
 

@@ -8,4 +8,6 @@ El estudio aplica el método analítico, descomponiendo el metajuego en sus comp
 
 Los resultados experimentales muestran que los modelos de aprendizaje automático pueden capturar patrones de evolución del meta cuando las partidas se agrupan en ventanas temporales y se representan mediante arquetipos. En la comparación de modelos, LSTM obtuvo el menor error global con MAE de 0.006103 y RMSE de 0.007541, seguido de Random Forest y LightGBM con desempeños muy cercanos. Una prueba t de Student pareada determinó que la diferencia entre LSTM y Random Forest no es estadísticamente significativa (p = 0.2646), indicando que ambos modelos ofrecen un rendimiento comparable. Además, el análisis de importancia de variables evidenció que las diferencias de copas iniciales (0.1899) y nivel de cartas (0.1374) tienen una importancia 84% mayor que las variables de rareza, confirmando que la progresión del jugador pesa más que la composición compositiva del mazo. Se concluye que la inteligencia artificial es una herramienta viable para anticipar tendencias estratégicas en *Clash Royale* y apoyar el análisis competitivo en eSports.
 
+**Palabras clave:** Clash Royale, metajuego, inteligencia artificial, aprendizaje automático, series temporales, LSTM, LightGBM, minería de datos, eSports
+
 \newpage
