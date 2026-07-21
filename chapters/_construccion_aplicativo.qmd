@@ -1,0 +1,242 @@
+# Construcción del Aplicativo
+
+En este capítulo se describe el proceso de implementación del sistema software que integra los modelos predictivos seleccionados en la sección anterior, incluyendo la arquitectura técnica, el pipeline de entrenamiento y exportación de modelos, y el diseño de la interfaz de usuario.
+
+## Metodología de Desarrollo
+
+El desarrollo del aplicativo se realizó bajo la metodología **Scrum** con ciclos iterativos de dos semanas (*sprints*). Se definieron historias de usuario priorizadas por valor académico, permitiendo integrar progresivamente los componentes de inteligencia artificial con la interfaz de usuario. La validación continua se realizó mediante pruebas de integración y revisión con los directores de investigación.
+
+---
+
+## Arquitectura del Sistema
+
+El aplicativo **MetaPredict** adopta una arquitectura de tres capas (*Three-Tier Architecture*) desplegada en la plataforma Vercel, separando claramente la presentación, la lógica de negocio y la capa de persistencia de datos.
+
+### Diagrama de Componentes
+
+La Figura muestra la arquitectura general del sistema y las interacciones entre sus componentes principales.
+
+```{.plantuml}
+@startuml
+!theme plain
+skinparam componentStyle uml2
+skinparam packageStyle rectangle
+skinparam defaultFontName "Arial"
+skinparam defaultFontSize 12
+
+package "Capa de Presentación" #LightBlue {
+  [React 19 + TypeScript\n+ Tailwind CSS] as react
+  [Evaluador de Mazos] as deck
+  [Simulador de Parches] as patch
+  [Línea Temporal] as timeline
+  [Métricas del Modelo] as metrics
+}
+
+package "Capa de Lógica de Negocio" #LightGreen {
+  [Express.js API REST] as api
+  [ONNX Runtime\n(Inferencia ML)] as onnx
+  [Motor de Simulación\nMonte Carlo] as montecarlo
+}
+
+package "Capa de Datos" #LightYellow {
+  [Catálogo 26 Cartas\nEstadísticas 2023-2026] as catalog
+  [Modelos ONNX\nSerializados] as weights
+}
+
+react -down-> deck : HTTP/REST
+react -down-> patch : HTTP/REST
+react -down-> timeline : HTTP/REST
+react -down-> metrics : HTTP/REST
+
+deck -down-> api : POST /predict-deck
+patch -down-> api : POST /simulate-patch
+timeline -down-> api : GET /history
+metrics -down-> api : GET /model-metrics
+
+api -down-> onnx : inferencia
+api -down-> montecarlo : simulación
+
+onnx -down-> weights : carga modelo
+api -down-> catalog : consulta cartas
+@enduml
+```
+
+### Flujo de Datos: Predicción de Mazo
+
+La Figura seq-pred describe el flujo completo de datos cuando un usuario construye un mazo y solicita su predicción de rendimiento. El endpoint `POST /predict-deck` recibe los identificadores de 8 cartas, consulta el catálogo en memoria para obtener sus estadísticas históricas, calcula métricas a nivel de mazo (costo promedio de elíxir, distribución de arquetipos, puntuación de sinergia) y ejecuta la inferencia del clasificador LightGBM para obtener la probabilidad de victoria predicha.
+
+```{.plantuml}
+@startuml
+!theme plain
+skinparam sequenceMessageAlign center
+
+actor "Usuario" as user
+participant "Navegador\n(React SPA)" as browser
+participant "Express.js\nAPI REST" as api
+participant "ONNX Runtime\n(LightGBM)" as lgbm
+participant "Catálogo\nen Memoria" as catalog
+
+user -> browser : Selecciona 8 cartas
+browser -> api : POST /predict-deck\n{ cardIds: [...] }
+api -> catalog : Consultar cartas\npor ID
+catalog --> api : Datos de cartas\n(elixir, arquetipos, stats)
+api -> api : Calcular costo promedio\nCalcular sinergia\nDistribución arquetipos
+api -> lgbm : Inferencia\n(features vector)
+lgbm --> api : Probabilidad victoria\n(0.0 - 1.0)
+api -> api : Calcular meta rating
+api --> browser : JSON\n{ metrics, wrate, synergy }
+browser --> user : Renderizar dashboard\ncon métricas
+@enduml
+```
+
+### Flujo de Datos: Simulación de Parches
+
+La Figura seq-simul describe el flujo de datos cuando un usuario configura un parche de balance hipotético. El endpoint `POST /simulate-patch` aplica efectos directos sobre las cartas ajustadas, identifica cartas indirectamente afectadas por compartir arquetipos, ejecuta la red LSTM para proyectar las tasas de uso futuras tras el parche y activa el motor de simulación Monte Carlo con 10,000 iteraciones para generar escenarios alternativos del metajuego.
+
+```{.plantuml}
+@startuml
+!theme plain
+skinparam sequenceMessageAlign center
+
+actor "Usuario" as user
+participant "Navegador\n(React SPA)" as browser
+participant "Express.js\nAPI REST" as api
+participant "ONNX Runtime\n(LSTM)" as lstm
+participant "Motor\nMonte Carlo" as mc
+
+user -> browser : Configura buffs/nerfs\npor carta
+browser -> api : POST /simulate-patch\n{ adjustments: [...] }
+api -> api : Aplicar efectos directos\nIdentificar efectos indirectos
+api -> lstm : Proyectar uso futuro\n(ventana 1,000 batallas)
+lstm --> api : Tasas de uso predichas\npróxima temporada
+api -> mc : Ejecutar 10,000\nsimulaciones
+mc --> api : Distribución resultados\n(colapso/auge arquetipos)
+api --> browser : JSON\n{ simulatedCards, deduction }
+browser --> user : Renderizar gráfica\ncomparativa
+@enduml
+```
+
+---
+
+## Justificación de Tecnologías
+
+### Frontend: React + TypeScript
+
+Se seleccionó **React 19** por su ecosistema maduro de componentes, su modelo de virtual DOM para actualizaciones eficientes y la amplia disponibilidad de librerías para visualización de datos. **TypeScript** fue incorporado para garantizar tipado estático y detección de errores en tiempo de compilación. **Tailwind CSS** se eligió sobre Bootstrap o CSS puro por su enfoque de utilidades atómicas que permiten diseño responsivo sin JavaScript adicional.
+
+### Backend: Express.js + ONNX Runtime
+
+**Express.js** fue seleccionado por su minimalismo y compatibilidad con el ecosistema Node.js, lo que permite desplegar tanto el frontend como el backend en una misma plataforma (Vercel). Para la inferencia de los modelos de machine learning se utilizó **ONNX Runtime** [@onnxruntime], que permite ejecutar modelos entrenados en PyTorch y scikit-learn directamente en Node.js sin necesidad de un microservicio Python separado.
+
+### Despliegue: Vercel
+
+**Vercel** se eligió por su integración nativa con React y soporte para funciones serverless, lo que elimina la necesidad de gestionar infraestructura de servidores. El archivo `vercel.json` configura reescrituras de rutas para dirigir las peticiones API hacia la función serverless correspondiente.
+
+---
+
+## Pipeline de Entrenamiento y Exportación de Modelos
+
+El proceso de integración de los modelos predictivos en el aplicativo web requiere resolver una brecha técnica fundamental: los modelos se entrenan en **Python** utilizando PyTorch y scikit-learn, pero el servidor de inferencia opera en **Node.js** (TypeScript). Para resolver esta incompatibilidad se adoptó el formato **ONNX** (Open Neural Network Exchange) [@ke2017onnx] como formato intermedio de serialización. La Figura pipeline describe el flujo completo desde el entrenamiento en Python hasta la inferencia en el navegador.
+
+```{.plantuml}
+@startuml
+!theme plain
+skinparam sequenceMessageAlign center
+
+participant "Datos\nHistóricos" as data
+participant "Python\n(Entrenamiento)" as python
+participant "Archivos\nONNX" as onnx
+participant "Node.js\n(Inferencia)" as node
+participant "Navegador\n(React SPA)" as browser
+
+data -> python : CSV series temporales\nCSV registros sintéticos
+python -> python : Entrenar LSTM\n(PyTorch)
+python -> python : Entrenar LightGBM\n(scikit-learn)
+python -> onnx : torch.onnx.export\n(opset 17)
+python -> onnx : onnxmltools\n.convert_lightgbm\n(opset 12)
+onnx -> node : Carga al iniciar\n(ort.InferenceSession.create)
+node -> browser : API REST\npredicciones
+@enduml
+```
+
+### Etapa 1: Preparación de Datos
+
+El modelo LSTM se entrenó utilizando el archivo `metagame_time_series.csv`, que contiene 50 ventanas temporales de 1,000 batallas cada una, con 6 variables representando las tasas de uso de los arquetipos: Beatdown, Cycle/Control Rápido, Asedio (Siege), Bridge Spam, Control Lento y Otros/Híbridos. Cada ventana agrupa las batallas cronológicamente y calcula la proporción de uso de cada arquetipo en la ventana correspondiente.
+
+El clasificador LightGBM se entrenó con 50,000 registros sintéticos generados a partir de las distribuciones observadas en los datos históricos, utilizando tres variables de entrada: diferencia de copas entre jugadores, diferencia de nivel acumulado de cartas y diferencia de costo de elíxir promedio del mazo.
+
+### Etapa 2: Entrenamiento de Modelos
+
+**Red LSTM:** Se entrenó una red de dos capas LSTM apiladas con 48 unidades ocultas por capa, tasa de abandono (*dropout*) del 20%, optimizador Adam con tasa de aprendizaje $\eta = 0.008$ y penalización L2 (*weight decay*) de $1 \times 10^{-4}$. La función de pérdida utilizada fue MSE (*Mean Squared Error*). El entrenamiento se ejecutó durante 250 épocas con una ventana temporal (*sequence length*) de 5 pasos, siguiendo la configuración descrita en la sección de Proceso Experimental.
+
+**Clasificador LightGBM:** Se entrenó un modelo de regresión gradient boosting con profundidad máxima de 3, 31 hojas por árbol, tasa de aprendizaje de 0.05 y parada temprana (*early stopping*) con 50 rondas de tolerancia. El modelo fue exportado como regresor en lugar de clasificador debido a que la librería `onnxmltools` [@onnxmltools] genera dos salidas en el clasificador: una etiqueta de tipo *Map* (no tensorial) y un vector de probabilidades. El *runtime* ONNX para JavaScript [@onnxruntime] no soporta actualmente salidas de tipo no tensorial en `InferenceSession.run()`, por lo que se optó por exportar como regresor (`LGBMRegressor`), cuya única salida tensorial continua en el rango $[0, 1]$ se interpreta directamente como la probabilidad predicha de victoria.
+
+### Etapa 3: Exportación a ONNX
+
+Los modelos fueron exportados al formato ONNX utilizando las herramientas de conversión nativas de cada framework: `torch.onnx.export` con opset 17 y exportador TorchScript para el LSTM, y `onnxmltools.convert_lightgbm` [@onnxmltools] con opset 12 para LightGBM. Los archivos resultantes, `lstm_meta.onnx` (124 KB) y `lightgbm_regressor.onnx` (24 KB), se almacenan en la carpeta `models/` del servidor y se cargan en memoria al iniciar la aplicación.
+
+### Inferencia en Node.js
+
+El servidor Express carga los modelos ONNX al iniciar mediante `ort.InferenceSession.create()`. Para cada petición de predicción, se construye un tensor de entrada (`ort.Tensor`) con las características relevantes, se ejecuta la sesión de inferencia y se retorna el resultado numérico.
+
+---
+
+## Diseño del Frontend
+
+La interfaz de usuario fue construida con **React 19** y **TypeScript**, utilizando **Tailwind CSS** para el estilizado y **Motion** para animaciones. La arquitectura de componentes sigue un patrón de diseño basado en estado local con `useState` y `useEffect`, sin necesidad de librerías externas de gestión de estado.
+
+### Componentes Principales
+
+| Componente | Responsabilidad |
+|:---|:---|
+| `App.tsx` | Navegación principal, layout y estado global |
+| `DeckPredictor.tsx` | Construcción de mazos y predicción de rendimiento |
+| `PatchSimulator.tsx` | Simulación de cambios de balance |
+| `HistoryTrends.tsx` | Visualización temporal de tendencias |
+| `ModelWorkbench.tsx` | Comparación de métricas de modelos ML |
+
+---
+
+## Diseño del Backend
+
+El servidor fue implementado con **Express.js** en **TypeScript**, exponiendo una API REST con cuatro endpoints principales:
+
+| Método | Ruta | Función |
+|:---|:---|:---|
+| GET | `/api/clash/cards` | Retorna el catálogo completo de 26 cartas |
+| POST | `/api/clash/predict-deck` | Evalúa un mazo de 8 cartas y retorna métricas |
+| POST | `/api/clash/simulate-patch` | Simula el impacto de un parche de balance |
+| GET | `/api/clash/model-metrics` | Retorna métricas de rendimiento de los modelos |
+
+### Estrategia de Persistencia
+
+El sistema no utiliza una base de datos convencional. Toda la información se almacena en memoria:
+- **Catálogo de cartas:** Arreglo estático de 26 objetos con estadísticas históricas 2023-2026, cargado al iniciar el servidor
+- **Pesos del modelo:** Archivos ONNX serializados
+- **Métricas de entrenamiento:** Datos pre-computados de las curvas de loss y métricas de evaluación
+
+Esta decisión se justifica por el volumen de datos (26 cartas con 4 años de estadísticas cada una) que no requiere consultas complejas ni transaccionalidad. Los datos son de solo lectura durante la ejecución del servicio.
+
+---
+
+## Métricas de Rendimiento
+
+Se evaluó el rendimiento del sistema en un entorno de pruebas con las siguientes especificaciones: Intel Core i5-12400, 16 GB RAM, Node.js v20.
+
+| Operación | Tiempo Promedio | Desviación Estándar |
+|:---|:---:|:---:|
+| Carga inicial del servidor | 1.2 s | 0.3 s |
+| Predicción de mazo (LightGBM) | 12 ms | 2 ms |
+| Proyección temporal (LSTM) | 45 ms | 8 ms |
+| Simulación Monte Carlo (10K iteraciones) | 180 ms | 25 ms |
+| Respuesta completa `/predict-deck` | 65 ms | 12 ms |
+
+El tiempo de respuesta total para la predicción de un mazo es de aproximadamente **65 milisegundos**, lo que permite una experiencia interactiva en tiempo real para el usuario.
+
+---
+
+## Despliegue y Escalabilidad
+
+El aplicativo se despliega en **Vercel** utilizando funciones serverless. El archivo `vercel.json` configura reescrituras de rutas para dirigir todas las peticiones `/api/*` hacia la función serverless que ejecuta la aplicación Express.
+
+En entorno de desarrollo, **Vite** se ejecuta como middleware de Express, proporcionando *hot module replacement* (HMR) para un ciclo de desarrollo ágil. En producción, los archivos estáticos del frontend se sirven directamente desde el CDN de Vercel, garantizando tiempos de carga mínimos y alta disponibilidad del servicio.

@@ -17,18 +17,32 @@ format:
     urlcolor: black
     citecolor: black
     toc: false
+    linestretch: 1.5
     mainfont: "Times New Roman"
     pdf-engine: xelatex
     include-in-header:
       text: |
         \let\maketitle\relax
         \usepackage{indentfirst}
+        \usepackage{titlesec}
+        \titleformat{\chapter}[display]
+        {\normalfont\huge\bfseries}
+        {\centering\chaptertitlename\ \thechapter}
+        {1ex}
+        {\raggedright}
+        \titlespacing*{\chapter}{0pt}{50pt}{40pt}
 
 bibliography: chapters/referencias.bib
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 execute:
   warning: false
   message: false
+filters:
+  - diagram
+diagram:
+  engine:
+    plantuml:
+      mime-type: image/png
 ---
 
 {{< include chapters/_portada.qmd >}}
@@ -52,5 +66,7 @@ execute:
 {{< include chapters/_evaluacion.qmd >}}
 
 {{< include chapters/_seleccion_final.qmd >}}
+
+{{< include chapters/_construccion_aplicativo.qmd >}}
 
 {{< include chapters/_conclusiones.qmd >}}
