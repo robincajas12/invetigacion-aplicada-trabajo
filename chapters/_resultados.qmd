@@ -58,7 +58,7 @@ Este resultado indica que, mientras que el costo neto de elíxir de la baraja no
 
 (**Figura 5.1**)
 
-*Imagen del virus VIH*
+*Distribución de popularidad y rendimiento por arquetipo*
 
 ![Distribución de popularidad y rendimiento por arquetipo](chapters/images/arquetipos_rendimiento.png){#fig-arquetipos-rendimiento fig-align="center" width=75%}
 

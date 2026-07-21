@@ -40,7 +40,7 @@ Sin embargo, las RNN estándar sufren el problema del **desvanecimiento del grad
 
 ### Long Short-Term Memory (LSTM)
 
-Las **LSTM** fueron propuestas por Hochreiter y Schmidhuber en 1997 para resolver el problema del desvanecimiento del gradiente. Una celda LSTM utiliza tres compuertas (*gates*) para controlar el flujo de información:
+Las **LSTM** fueron propuestas por Hochreiter y Schmidhuber en 1997 [@hochreiter1997lstm] para resolver el problema del desvanecimiento del gradiente. Una celda LSTM utiliza tres compuertas (*gates*) para controlar el flujo de información:
 
 * **Compuerta de olvido (*forget gate*):** Decide qué información descartar del estado de celda anterior.
 * **Compuerta de entrada (*input gate*):** Decide qué nueva información almacenar en el estado de celda.

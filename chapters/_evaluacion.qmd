@@ -35,7 +35,7 @@ La comparación gráfica de las trayectorias predichas frente a la serie real se
 
 La Figura 7.1 ilustra la reconstrucción de la serie temporal del metajuego por cada uno de los algoritmos evaluados. Del gráfico se observa:
 
-1. **Liderazgo de LSTM (MAE: 0.006103):** La red neuronal recurrente LSTM obtiene el ajuste más suave y preciso respecto a la línea real (*ground truth*). Sus compuertas de memoria interna permiten retener las inercia acumulativas de adopción de arquetipos a lo largo de las semanas (como el crecimiento sostenido de los mazos de *Ciclo Rápido*).
+1. **Liderazgo de LSTM (MAE: 0.006103):** La red neuronal recurrente LSTM obtiene el ajuste más suave y preciso respecto a la línea real (*ground truth*). Sus compuertas de memoria interna permiten retener las inercias acumulativas de adopción de arquetipos a lo largo de las semanas (como el crecimiento sostenido de los mazos de *Ciclo Rápido*).
 
 2. **Aproximación Escalonada de los Árboles (Random Forest y LightGBM):** Random Forest (MAE: 0.006231) y LightGBM (MAE: 0.006279) muestran una precisión muy cercana a LSTM. No obstante, sus curvas presentan pequeñas oscilaciones escalonadas debido a que los ensambles de decisión dividen el espacio de características en regiones discretas, aproximando por la media local.
 

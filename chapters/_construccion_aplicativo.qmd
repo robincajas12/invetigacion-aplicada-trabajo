@@ -2,9 +2,6 @@
 
 Se describe el proceso de implementación del sistema software que integra los modelos predictivos seleccionados en la sección anterior, incluyendo la arquitectura técnica, el pipeline de entrenamiento y exportación de modelos, y el diseño de la interfaz de usuario.
 
-> [!IMPORTANT]
-> En la etapa de creación y desarrollo de los aplicativos se agregan e integran **nuevos conceptos y soluciones tecnológicas que no fueron abarcadas originalmente en el Marco Teórico (Capítulo 2)**. Estas adiciones (tales como la arquitectura de tres capas, controladores REST, serialización ONNX y micro-simulaciones estocásticas) resultan esenciales para trasladar el conocimiento teórico hacia un sistema software interactivo en tiempo real.
-
 ## Metodología de Desarrollo
 
 El desarrollo del aplicativo se realizó bajo la metodología **Scrum** con ciclos iterativos de dos semanas (*sprints*). Se definieron historias de usuario priorizadas por valor académico, permitiendo integrar progresivamente los componentes de inteligencia artificial con la interfaz de usuario. La validación continua se realizó mediante pruebas de integración y revisión con los directores de investigación.
