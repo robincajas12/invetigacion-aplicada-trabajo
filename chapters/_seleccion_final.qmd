@@ -4,7 +4,7 @@ En este capítulo se selecciona y justifica el mejor sistema predictivo para el 
 
 ## Selección y Justificación Científica del Modelo Final
 
-En base a la evidencia experimental recolectada, se determina que el mejor sistema predictivo es un **Ensamble Híbrido Secuencial (LSTM + LightGBM)** [@lstmtutorial; @lightgbmdoc]:
+Con la evidencia experimental recolectada, se determina que el mejor sistema predictivo es un **Ensamble Híbrido Secuencial (LSTM + LightGBM)** [@lstmtutorial; @lightgbmdoc]:
 
 ### Justificación de la Red LSTM
 1. **Memoria de Largo Plazo:** La red LSTM demostró el menor error global de predicción (MAE: 0.006103) debido a su capacidad para retener dinámicas acumulativas temporales. Esto resulta crítico para modelar el comportamiento de los jugadores, quienes no cambian instantáneamente de mazo el día de un parche, sino que transicionan de forma progresiva a lo largo de las semanas.

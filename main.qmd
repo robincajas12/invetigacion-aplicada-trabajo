@@ -20,11 +20,20 @@ format:
     linestretch: 1.5
     mainfont: "Times New Roman"
     pdf-engine: xelatex
+    crossref:
+      fig-prefix: "Figura"
+      tbl-prefix: "Tabla"
+    tbl-cap-location: top
+    fig-cap-location: bottom
     include-in-header:
       text: |
         \let\maketitle\relax
         \usepackage{indentfirst}
         \usepackage{titlesec}
+        \usepackage{booktabs}
+        \usepackage{caption}
+        \captionsetup[table]{labelsep=space, justification=raggedright, font={bf}}
+        \captionsetup[figure]{labelsep=space, justification=centering}
         \titleformat{\chapter}[display]
         {\normalfont\huge\bfseries}
         {\centering\chaptertitlename\ \thechapter}

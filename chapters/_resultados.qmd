@@ -1,6 +1,6 @@
 # Análisis Estadístico del Conjunto de Datos
 
-El análisis cuantitativo de las variables disponibles en el dataset es fundamental para justificar la estructura de entrada de los modelos de inteligencia artificial y su preprocesamiento.
+El análisis cuantitativo de las variables disponibles en el dataset sirve para justificar la estructura de entrada de los modelos de inteligencia artificial y su preprocesamiento.
 
 ## Estructura y Variables Disponibles
 
@@ -11,7 +11,7 @@ El conjunto de datos de entrenamiento definitivo consta de un total de **50,000*
 
 ### Datos Categóricos y de Composición de Mazos
 * `winner.card1.id` a `winner.card8.id` y `loser.card1.id` a `loser.card8.id` (Valores enteros de ID de Supercell correspondientes a las cartas del mazo).
-* Se asocian a tablas maestras de datos estadísticos (`Wincons.csv` y `CardMasterListSeason18_12082020.csv`) para clasificar dinámicamente las barajas en arquetipos.
+* Se asocian a tablas maestras de datos estadísticos (`Wincons.csv` y `CardMasterListSeasons.csv`) para clasificar dinámicamente las barajas en arquetipos.
 
 ### Datos Numéricos de Popularidad y Rendimiento
 * **Tasa de Uso (Use Rate %):** Representa el porcentaje de apariciones de cada arquetipo o carta con respecto al total de barajas analizadas en cada ventana temporal de 1,000 partidas ($N = 2,000$ barajas por paso temporal).
@@ -29,16 +29,24 @@ Al procesar la totalidad del conjunto de datos e investigar las estadísticas de
 
 Al comparar las medias generales de los parámetros numéricos de los mazos de los ganadores frente a los de los perdedores, se obtienen los siguientes resultados empíricos:
 
+(**Tabla 3**)
+
+*Comparativa de parámetros entre ganadores y perdedores*
+
 | Parámetro | Ganadores | Perdedores | Diferencia Relativa |
 |:---|:---:|:---:|:---:|
 | **Costo de Elíxir Promedio** | 3.838 | 3.866 | -0.028 |
 | **Nivel Acumulado de Cartas** | 95.42 | 94.19 | +1.23 |
 
-*Fuente:* Elaboración propia basada en el procesamiento de 50,000 partidas del conjunto de datos histórico (2023-2026).
+*Nota.* Elaboración propia basada en el procesamiento de 50,000 partidas del conjunto de datos histórico (2023-2026).
 
 Este resultado indica que, mientras que el costo neto de elíxir de la baraja no influye significativamente en la victoria (con una diferencia residual de apenas 0.028 de elíxir), el nivel total de las cartas sí presenta una correlación positiva fuerte con el resultado favorable de la batalla.
 
 ### Distribución de Popularidad y Desempeño por Arquetipo (Meso)
+
+(**Tabla 4**)
+
+*Distribución de popularidad y rendimiento por arquetipo*
 
 | Arquetipo | Tasa de Uso (%) | Win Rate (%) |
 |:---|:---:|:---:|
@@ -48,12 +56,15 @@ Este resultado indica que, mientras que el costo neto de elíxir de la baraja no
 | Asedio | 3.2 | 53.1 |
 | Otros | 11.8 | 49.1 |
 
-*Fuente:* Elaboración propia a partir de datos agregados en ventanas temporales del conjunto de datos (2023-2026).
+*Nota.* Elaboración propia a partir de datos agregados en ventanas temporales del conjunto de datos (2023-2026).
+
+(**Figura 5.1**)
+
+*Imagen del virus VIH*
 
 ![Distribución de popularidad y rendimiento por arquetipo](chapters/images/arquetipos_rendimiento.png){#fig-arquetipos-rendimiento fig-align="center" width=75%}
 
-**Figura 5.1:** Distribución de la popularidad (Tasa de Uso %) frente al rendimiento promedio (Win Rate %) por arquetipo competitivo en Clash Royale.  
-*Fuente:* Elaboración propia a partir del análisis empírico del conjunto de datos (2023-2026).
+*Nota.* Elaboración propia a partir del análisis empírico del conjunto de datos (2023-2026).
 
 La Figura 5.1 representa visualmente la relación entre la frecuencia con la que la comunidad adopta una estrategia específica (eje de uso) y su efectividad porcentual en victorias (eje de win rate). De la observación detallada de este gráfico se extraen las siguientes explicaciones clave:
 

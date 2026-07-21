@@ -1,9 +1,13 @@
 # Evaluación Comparativa de los Modelos
 
-En este capítulo se presentan los resultados empíricos cuantitativos de los 6 modelos entrenados sobre las 50,000 partidas de Clash Royale en CPU, analizando sus desviaciones respecto al comportamiento real histórico del metajuego.
+Se presentan los resultados empíricos cuantitativos de los 6 modelos entrenados sobre las 50,000 partidas de Clash Royale en CPU, analizando sus desviaciones respecto al comportamiento real histórico del metajuego.
 ## Tabla General de Métricas de Error Temporal
 
 La evaluación se realizó sobre el conjunto de prueba utilizando tres métricas estándar: Error Absoluto Medio (MAE), Raíz del Error Cuadrático Medio (RMSE) y el Coeficiente de Determinación ($R^2$). Los resultados ordenados de mejor a peor desempeño son:
+
+(**Tabla 10**)
+
+*Métricas de error temporal de los modelos evaluados*
 
 | Modelo | MAE | RMSE | Coeficiente de Determinación ($R^2$) |
 |:---|:---:|:---:|:---:|
@@ -14,7 +18,7 @@ La evaluación se realizó sobre el conjunto de prueba utilizando tres métricas
 | **XGBoost** | 0.007451 | 0.009568 | 0.994936 |
 | **Prophet** | 0.007774 | 0.010142 | 0.994311 |
 
-*Fuente:* Evaluación experimental propia sobre el conjunto de prueba temporal (2023-2026).
+*Nota.* Evaluación experimental propia sobre el conjunto de prueba temporal (2023-2026).
 
 ---
 
@@ -23,12 +27,15 @@ La evaluación se realizó sobre el conjunto de prueba utilizando tres métricas
 ### Curva de Predicción Temporal del Metajuego
 La comparación gráfica de las trayectorias predichas frente a la serie real se ilustra en el gráfico de comparación guardado en el sistema:
 
+(**Figura 7.1**)
+
+*Trayectorias temporales predichas por los 6 modelos*
+
 ![Comparación de Predicciones del Metajuego](chapters/images/comparacion_todos_modelos.png){#fig-comparacion-modelos fig-align="center" width=75%}
 
-**Figura 7.1:** Trayectorias temporales predichas por los 6 modelos evaluados frente a los valores reales observados en el conjunto de prueba.  
-*Fuente:* Elaboración propia mediante la evaluación computacional de modelos en la serie temporal 2023-2026.
+*Nota.* Elaboración propia mediante la evaluación computacional de modelos en la serie temporal 2023-2026.
 
-La Figura 7.1 ilustra la reconstrucción de la serie temporal del metajuego por cada uno de los algoritmos evaluados. De la interpretación del gráfico se concluye:
+La Figura 7.1 ilustra la reconstrucción de la serie temporal del metajuego por cada uno de los algoritmos evaluados. Del gráfico se observa:
 
 1. **Liderazgo de LSTM (MAE: 0.006103):** La red neuronal recurrente LSTM obtiene el ajuste más suave y preciso respecto a la línea real (*ground truth*). Sus compuertas de memoria interna permiten retener las inercia acumulativas de adopción de arquetipos a lo largo de las semanas (como el crecimiento sostenido de los mazos de *Ciclo Rápido*).
 
@@ -48,6 +55,10 @@ Para determinar si la diferencia observada entre LSTM (MAE: 0.006103) y Random F
 
 **Resultados:**
 
+(**Tabla 11**)
+
+*Resultados de la prueba t de Student pareada*
+
 | Parámetro | Valor |
 |:---|:---:|
 | Muestras en test | 9 |
@@ -57,6 +68,6 @@ Para determinar si la diferencia observada entre LSTM (MAE: 0.006103) y Random F
 | Estadístico t | 1.1998 |
 | Valor p | 0.2646 |
 
-*Fuente:* Prueba t de Student para muestras pareadas calculada sobre los errores residuales por ventana temporal (Elaboración propia).
+*Nota.* Prueba t de Student para muestras pareadas calculada sobre los errores residuales por ventana temporal (Elaboración propia).
 
 **Interpretación:** Dado que el valor p (0.2646) es mayor al nivel de significancia $\alpha = 0.05$, **no se rechaza la hipótesis nula**. La diferencia entre LSTM y Random Forest no es estadísticamente significativa con el tamaño de muestra disponible ($n = 9$). Esto indica que, aunque LSTM obtiene el menor MAE nominal, los dos modelos ofrecen un rendimiento comparable y la diferencia observada podría atribuirse a variabilidad muestral. Se recomienda ampliar la ventana histórica de datos para obtener una potencia estadística mayor.

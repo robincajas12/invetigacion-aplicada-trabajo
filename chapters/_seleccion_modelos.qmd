@@ -50,7 +50,7 @@ Para predecir las series temporales de uso y win rates de los arquetipos de Clas
 
 ## Tecnologías e Innovaciones Incorporadas en la Creación del Aplicativo
 
-Tal como se ha señalado, la transición del modelado teórico hacia un aplicativo software operativo requirió la introducción de conceptos computacionales y arquitecturas avanzadas. A continuación se detallan estas tecnologías clave:
+Como se explicó antes, la transición del modelado teórico hacia un aplicativo software operativo requirió la introducción de conceptos computacionales y arquitecturas avanzadas. Las tecnologías clave son:
 
 ### Formato ONNX y Motor de Inferencia ONNX Runtime
 El estándar **ONNX (Open Neural Network Exchange)** [@ke2017onnx] resuelve la incompatibilidad entre el entorno de entrenamiento en Python (PyTorch / scikit-learn) y el entorno de producción web en Node.js. Al exportar las redes LSTM y los árboles LightGBM al formato ONNX (grafos computacionales serializados), **ONNX Runtime** [@onnxruntime] ejecuta la inferencia directamente en JavaScript/TypeScript con tiempos de latencia sub-50 milisegundos sin necesidad de mantener un servidor Python activo.

@@ -22,7 +22,7 @@ Desarrollar un modelo de inteligencia artificial capaz de predecir cambios y ten
 
 ## Objetivos específicos
 
-A continuación se detallan las metas a cumplir:
+Las metas a cumplir son:
 
 1. Recolectar y procesar datos relacionados con el rendimiento, popularidad y uso de cartas y mazos en *Clash Royale* durante el período 2023-2026.
 2. Analizar patrones temporales y variaciones del metajuego utilizando técnicas de IA.
@@ -40,6 +40,10 @@ Desde la ciencia de datos, el metajuego puede representarse como una serie tempo
 
 El análisis se organiza alrededor de cinco conceptos:
 
+(**Tabla 1**)
+
+*Definición operativa de conceptos centrales*
+
 | Concepto | Definición operativa |
 |:---|:---|
 | Carta | Unidad básica del juego con atributos, rareza, costo y función táctica |
@@ -48,11 +52,15 @@ El análisis se organiza alrededor de cinco conceptos:
 | Tasa de uso | Frecuencia relativa con la que aparece una carta, mazo o arquetipo |
 | Tasa de victoria | Porcentaje de victorias obtenido por una carta, mazo o arquetipo |
 
-*Fuente:* Elaboración propia basada en las mecánicas de juego de Supercell (2023-2026).
+*Nota.* Elaboración propia basada en las mecánicas de juego de Supercell (2023-2026).
 
 ## Arquetipos considerados
 
 Para reducir la complejidad combinatoria, los mazos se agrupan en arquetipos:
+
+(**Tabla 2**)
+
+*Clasificación de arquetipos competitivos*
 
 | Arquetipo | Descripción |
 |:---|:---|
@@ -63,7 +71,7 @@ Para reducir la complejidad combinatoria, los mazos se agrupan en arquetipos:
 | Control lento | Mazos defensivos que buscan contraataques de alto valor |
 | Híbridos | Mazos que combinan varias condiciones de victoria o no encajan en una sola categoría |
 
-*Fuente:* Clasificación y elaboración propia basada en el procesamiento del conjunto de datos histórico de partidas de Clash Royale (2023-2026).
+*Nota.* Clasificación y elaboración propia basada en el procesamiento del conjunto de datos histórico de partidas de Clash Royale (2023-2026).
 
 Esta clasificación permite transformar millones de combinaciones posibles en grupos interpretables para el análisis predictivo.
 

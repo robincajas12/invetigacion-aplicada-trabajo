@@ -113,7 +113,7 @@ La **minería de datos** consiste en aplicar algoritmos de descubrimiento de con
 
 ## Tecnologías e Innovaciones Incorporadas en la Creación del Aplicativo
 
-Durante las fases de investigación, experimentación computacional y desarrollo del aplicativo interactivo, se incorporaron conceptos tecnológicos y herramientas avanzadas de software que complementan y extienden el Marco Teórico tradicional. A continuación se fundamenta cada uno de estos constructos:
+Durante las fases de investigación, experimentación computacional y desarrollo del aplicativo interactivo, se incorporaron conceptos tecnológicos y herramientas avanzadas de software que complementan y extienden el Marco Teórico tradicional. Se explican a continuación:
 
 ### Formato ONNX y Motor de Inferencia ONNX Runtime
 
