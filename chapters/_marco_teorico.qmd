@@ -110,3 +110,51 @@ $$R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar
 El **análisis de eSports** (*eSports Analytics*) aplica técnicas de ciencia de datos y aprendizaje automático para extraer conocimiento de los datos generados por videojuegos competitivos. En juegos como *Clash Royale*, los datos disponibles incluyen composición de mazos, niveles de cartas, tasas de uso, resultados de partidas y métricas de rendimiento.
 
 La **minería de datos** consiste en aplicar algoritmos de descubrimiento de conocimiento sobre grandes volúmenes de datos para identificar patrones, correlaciones y tendencias útiles para la toma de decisiones [@russell2018machine]. En este estudio, la minería de datos se utiliza para clasificar arquetipos, identificar sinergias entre cartas y determinar los factores que más influyen en la victoria.
+
+## Tecnologías e Innovaciones Incorporadas en la Creación del Aplicativo
+
+Durante las fases de investigación, experimentación computacional y desarrollo del aplicativo interactivo, se incorporaron conceptos tecnológicos y herramientas avanzadas de software que complementan y extienden el Marco Teórico tradicional. A continuación se fundamenta cada uno de estos constructos:
+
+### Formato ONNX y Motor de Inferencia ONNX Runtime
+
+* **ONNX (Open Neural Network Exchange):** Es un formato estándar abierto de representación de modelos de aprendizaje automático propuesto por Linux Foundation, Microsoft y socios de la industria [@ke2017onnx]. Su función principal es definir un grafo computacional agnóstico de lenguaje que permite transferir modelos entre diferentes marcos de trabajo (tales como PyTorch, TensorFlow o scikit-learn).
+* **Grafos Computacionales Serializados:** Estructura de datos acíclica dirigida en la que los nodos representan operaciones matemáticas (convoluciones, multiplicaciones matriciales, funciones de activación) y las aristas representan tensores de datos. La serialización codifica estos grafos en formato binario neutro para su distribución.
+* **Entorno de Ejecución Node.js:** Entorno de ejecución de JavaScript del lado del servidor construido sobre el motor V8 de Google, que permite procesar peticiones de forma asíncrona y no bloqueante mediante un bucle de eventos (*event loop*).
+* **ONNX Runtime:** Motor de inferencia de alto rendimiento diseñado para ejecutar modelos ONNX de forma multiplataforma [@onnxruntime]. Al cargar los grafos serializados en Node.js, ONNX Runtime ejecuta la inferencia directamente en JavaScript/TypeScript, logrando latencias de respuesta sub-50 milisegundos sin la necesidad de desplegar un microservicio Python independiente en producción.
+
+### Arquitectura Web Frontend: Single Page Application (SPA) y Tecnologías UI
+
+* **Single Page Application (SPA):** Arquitectura de aplicación web que carga una única página HTML y actualiza dinámicamente el contenido mediante JavaScript a medida que el usuario interactúa con la interfaz, evitando la recarga completa del documento desde el servidor y mejorando la experiencia de usuario (*UX*).
+* **React 19:** Librería de código abierto para la construcción de interfaces de usuario basadas en componentes declarativos y reutilizables. Utiliza un **Virtual DOM** (representación ligera en memoria del DOM real) para calcular diferencias (*reconciliación*) y minimizar las operaciones de renderizado en el navegador. La gestión del estado se realiza mediante *hooks* reactivos como `useState` y `useEffect`.
+* **TypeScript:** Superconjunto de lenguaje tipado estáticamente que se compila a JavaScript. Proporciona chequeo de tipos en tiempo de compilación, interfaces y autocompletado, reduciendo drásticamente errores de ejecución y facilitando el mantenimiento de código complejo.
+* **Tailwind CSS:** Framework de diseño CSS basado en utilidades atómicas que permite construir interfaces altamente personalizadas y responsivas directamente en el marcado HTML, optimizando el tamaño del paquete final mediante la eliminación de estilos no utilizados (*PurgeCSS*).
+
+### Arquitectura Backend, Protocolo HTTP y API REST
+
+* **Protocolo HTTP (Hypertext Transfer Protocol):** Protocolo de transferencia de datos de la capa de aplicación en el modelo TCP/IP que rige la comunicación cliente-servidor mediante peticiones de solicitud (*request*) y respuesta (*response*).
+* **API REST (Representational State Transfer):** Estilo de arquitectura de software para sistemas distribuidos basado en la manipulación de recursos mediante URIs explícitas y verbos HTTP estándar (`GET` para consulta, `POST` para procesamiento y envío de datos). Las peticiones son sin estado (*stateless*), lo que garantiza escalabilidad horizontal.
+* **Express.js:** Framework minimalista y flexible para Node.js que proporciona una infraestructura robusta de enrutamiento, controladores middleware y gestión de peticiones HTTP en aplicaciones web.
+
+### Infraestructura de Despliegue Serverless (Vercel Edge Platform)
+
+* **Arquitectura Serverless:** Modelo de ejecución de computación en la nube donde el proveedor gestiona automáticamente la asignación y el escalado de servidores físicos. El desarrollador solo despliega código en forma de funciones efímeras (*Serverless Functions*) que se activan bajo demanda y se eliminan al finalizar la ejecución.
+* **Vercel Edge Platform:** Red de distribución de contenido (*CDN*) global optimizada para aplicaciones React y Express, que ejecuta funciones en nodos edge cercanos geográficamente al usuario final, reduciendo la latencia de red y eliminando los costos de infraestructura dedicada.
+
+### Ecosistema de Ingestión, Preprocesamiento y Data Science en Python
+
+* **Pandas:** Librería de código abierto que proporciona estructuras de datos de alto rendimiento (como `DataFrame` y `Series`) para la manipulación, limpieza, alineación y agregación temporal de conjuntos de datos tabulares.
+* **NumPy:** Biblioteca fundamental para la computación científica en Python que provee objetos matriciales multidimensionales (`ndarray`) optimizados en C para operaciones de álgebra lineal y manejo vectorial eficiente.
+* **Scikit-learn:** Suite de aprendizaje automático que proporciona utilidades para escalado de características, división temporal de conjuntos de datos, cálculo de métricas de evaluación (MAE, RMSE, $R^2$) y conversión de ensambles de árboles a formatos ONNX [@scikitmetrics].
+* **PyTorch:** Framework de aprendizaje profundo basado en tensores y diferenciación automática (*autograd*) [@pytorchnn]. Permite definir arquitecturas de redes neuronales complejas (como redes LSTM apiladas mediante `nn.Module`) y exportar el modelo entrenado a grafos ONNX usando `torch.onnx.export`.
+
+### Arquitectura de Ensamble Híbrido Multiescala (LSTM + LightGBM)
+
+La solución predictiva desacopla el metajuego en dos niveles jerárquicos:
+
+1. **Modelado Macro (Nivel Series Temporales - LSTM):** Captura las inercias acumulativas y la evolución temporal de la tasa de uso de los arquetipos competitivos a lo largo de las semanas y temporadas.
+
+2. **Modelado Micro (Nivel Partida Individual - LightGBM):** Modela la regresión de probabilidad de victoria en enfrentamientos directos de mazos en función de diferencias relativas de nivel de cartas, copas iniciales y costo promedio de elíxir.
+
+### Motor de Simulación Estocástica Monte Carlo
+
+La **Simulación Monte Carlo** [@montecarlosim] es una técnica matemática que permite estimar los posibles resultados de un evento incierto mediante muestreo aleatorio repetido. En el aplicativo, este motor ejecuta 10,000 iteraciones estocásticas aplicando perturbaciones controladas sobre las estadísticas de las cartas ajustadas por un parche de balance, proyectando la probabilidad de auge o colapso de cada arquetipo en la próxima temporada competitiva.

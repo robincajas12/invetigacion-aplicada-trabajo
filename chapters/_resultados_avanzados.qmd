@@ -13,9 +13,14 @@ Para evaluar si la inversión en la obtención de cartas de alta rareza influye 
 | **Épicas** | 1.93 | 1.93 |
 | **Legendarias** | 1.60 | 1.60 |
 
-![Distribución de Rareza de Cartas en Mazos Ganadores vs. Perdedores](chapters/images/rarezas_ganadoras.png){#fig-rarezas fig-align="center" width=70%}
+*Fuente:* Elaboración propia a partir del análisis del conjunto de datos de 50,000 partidas (2023-2026).
 
-El análisis cuantitativo revela que la distribución es prácticamente idéntica en ambos grupos. Esto demuestra que **la cantidad total de cartas legendarias o épicas en un mazo no otorga ninguna ventaja competitiva directa en igualdad de condiciones**. Las sinergias y los niveles de carta acumulados juegan un rol prioritario, sugiriendo un diseño competitivo de suma cero saludable.
+![Distribución de Rareza de Cartas en Mazos Ganadores vs. Perdedores](chapters/images/rarezas_ganadoras.png){#fig-rarezas fig-align="center" width=75%}
+
+**Figura 6.1:** Distribución comparativa del número promedio de cartas por categoría de rareza en mazos ganadores frente a mazos perdedores.  
+*Fuente:* Elaboración propia a partir del análisis del conjunto de datos histórico (2023-2026).
+
+La Figura 6.1 muestra la comparación de la estructura compositiva de los mazos según la rareza de sus unidades. El gráfico de barras agrupadas ilustra que los mazos victoriosos contienen en promedio 2.45 cartas comunes, 2.02 especiales, 1.93 épicas y 1.60 legendarias, valores prácticamente idénticos a los observados en las barajas derrotadas (2.46 comunes, 2.01 especiales, 1.93 épicas y 1.60 legendarias). Esta simetría empírica demuestra que la presencia de cartas de alta rareza no constituye una ventaja injusta por sí sola, validando el balance competitivo del diseño de juego.
 
 ---
 
@@ -31,11 +36,14 @@ El metajuego micro de Clash Royale se rige por la complementariedad táctica de 
 | **Golem + Night Witch** | 315 | 54.21% |
 | **Miner + Poison** | 290 | 53.79% |
 
-![Top Sinergias y Combos de Cartas por Win Rate](chapters/images/sinergias_combos.png){#fig-sinergias fig-align="center" width=70%}
+*Fuente:* Elaboración propia basada en el análisis de pares de cartas con al menos 150 batallas en el conjunto de datos (2023-2026).
 
-\newpage
+![Top Sinergias y Combos de Cartas por Win Rate](chapters/images/sinergias_combos.png){#fig-sinergias fig-align="center" width=75%}
 
-La combinación *Baby Dragon + Hunter* destaca exponencialmente por su enorme win rate (68.90%). Esto se debe a una complementariedad óptima de roles defensivos: el Baby Dragon aporta limpieza de hordas en área por aire, mientras que el Hunter provee daño masivo concentrado a corta distancia contra unidades pesadas terrestres y aéreas.
+**Figura 6.2:** Porcentaje de victoria (Win Rate %) alcanzado por los combos de dos cartas con mayor efectividad en partidas competitivas.  
+*Fuente:* Elaboración propia basada en la minería de patrones de combinación de cartas (2023-2026).
+
+La Figura 6.2 ilustra la efectividad de las principales parejas de cartas en el dataset. Sobresale la combinación *Baby Dragon + Hunter* con un 68.90% de victorias. Esta cifra excepcional representa una sinergia defensiva óptima: el *Baby Dragon* aporta daño de salpicadura aéreo para limpiar tropas en grupo, mientras que el *Cazador (Hunter)* provee daño masivo a corta distancia contra unidades de alta vida. Asimismo, combos clásicos como *Golem + Night Witch* (54.21%) y *Pekka + Electro Wizard* (56.67%) confirman que la complementariedad de roles en el mazo es un factor decisivo.
 
 ---
 
@@ -56,12 +64,14 @@ Para determinar la relevancia de cada métrica del dataset, se entrenó un clasi
 | **Diferencia en Cantidad de Hechizos** | 0.0519 |
 | **Diferencia en Cantidad de Estructuras** | 0.0494 |
 
-![Importancia de Características para Clasificación de la Victoria](chapters/images/features_importance.png){#fig-importancia-variables fig-align="center" width=70%}
+*Fuente:* Clasificador Random Forest (100 estimadores) entrenado sobre diferencias relativas entre jugadores (Elaboración propia).
 
-### Análisis de la Importancia:
-1. **Diferencia de Copas (Habilidad/Ranking):** El indicador de rango histórico inicial del jugador y su habilidad relativa representa el factor más importante (18.99%).
-2. **Diferencia de Elíxir Promedio (Gestión de Recursos):** La diferencia entre el costo promedio de las cartas de ambos mazos representa la segunda variable de mayor peso (15.36%). Un mazo demasiado pesado o con una mala rotación resulta castigado.
-3. **Diferencia de Nivel de Cartas (Fuerza Bruta):** Con una relevancia del 13.74%, el nivel acumulado de las cartas demuestra que las barajas maximizadas mitigan significativamente la variabilidad estratégica o los desbalances tácticos.
+![Importancia de Características para Clasificación de la Victoria](chapters/images/features_importance.png){#fig-importancia-variables fig-align="center" width=75%}
+
+**Figura 6.3:** Ranking de importancia de características (*Feature Importance*) obtenido mediante el modelo Random Forest para clasificar al ganador.  
+*Fuente:* Modelo Random Forest clasificador de 100 estimadores (Elaboración propia).
+
+La Figura 6.3 ordena jerárquicamente las variables según su contribución matemática al árbol de decisión. Se evidencia que la *Diferencia de Copas Iniciales* (18.99%) constituye la señal más influyente, al reflejar el nivel de habilidad y experiencia del jugador. Le siguen la *Diferencia de Elíxir Promedio* (15.36%) y la *Diferencia de Nivel de Cartas* (13.74%), lo que confirma que el control del flujo de elixir y la progresión física de las cartas superan significativamente a las variables de rareza individual.
 
 ---
 
@@ -74,10 +84,14 @@ Se planteó la hipótesis de que las variables de **habilidad/progresión** (Cop
 | **A: Habilidad/Progresión** | Copas Iniciales (0.1899), Nivel de Cartas (0.1374) | **0.1637** |
 | **B: Rarezas** | Comunes (0.0875), Raras (0.0897), Épicas (0.0943), Legendarias (0.0837) | **0.0888** |
 
+*Fuente:* Elaboración propia basada en la agrupación de coeficientes de importancia de Random Forest.
+
 | Parámetro | Valor |
 |:---|:---:|
 | Diferencia de medias (A $-$ B) | 0.0749 |
 | Estadístico t | 2.8414 |
 | Valor p (unilateral) | 0.1063 |
+
+*Fuente:* Cálculo estadístico propio mediante la prueba t de Welch para muestras independientes.
 
 **Interpretación:** La media de importancia del grupo de Habilidad/Progresión (0.1637) es un **84% mayor** que la del grupo de Rarezas (0.0888). Aunque el valor p (0.1063) no alcanza el umbral convencional de $\alpha = 0.05$ debido al reducido número de variables en cada grupo ($n_A = 2$, $n_B = 4$), la dirección del efecto es consistente con la hipótesis: tanto las Copas como el Nivel de Cartas superan individualmente a cada variable de rareza en capacidad predictiva. Esto confirma que el progreso del jugador (nivel de cartas y rango) pesa más que la rareza compositiva del mazo.
