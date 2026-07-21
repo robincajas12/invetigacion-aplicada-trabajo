@@ -20,8 +20,6 @@ La evaluación se realizó sobre el conjunto de prueba utilizando tres métricas
 
 *Nota.* Evaluación experimental propia sobre el conjunto de prueba temporal (2023-2026).
 
----
-
 ## Análisis del Desempeño y Curvas de Error
 
 ### Curva de Predicción Temporal del Metajuego
@@ -42,8 +40,6 @@ La Figura 7.1 ilustra la reconstrucción de la serie temporal del metajuego por 
 2. **Aproximación Escalonada de los Árboles (Random Forest y LightGBM):** Random Forest (MAE: 0.006231) y LightGBM (MAE: 0.006279) muestran una precisión muy cercana a LSTM. No obstante, sus curvas presentan pequeñas oscilaciones escalonadas debido a que los ensambles de decisión dividen el espacio de características en regiones discretas, aproximando por la media local.
 
 3. **Incapacidad Multivariante de Prophet (MAE: 0.007774):** Prophet registra la mayor desviación en el conjunto de prueba. Al tratarse de un modelo aditivo univariante, proyecta cada arquetipo por separado sin comprender que en un sistema cerrado de suma cero (100% de uso total), la ganancia de popularidad de un arquetipo necesariamente reduce la de los demás.
-
----
 
 ## Prueba de Significancia Estadística (t de Student)
 

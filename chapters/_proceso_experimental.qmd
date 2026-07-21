@@ -12,8 +12,6 @@ La división de los datos se realizó bajo una **Validación Temporal Estricta**
 
 * **Conjunto de Prueba (Test Set):** Corresponde al último **20%** de los pasos temporales ($t = 37$ hasta $t = 45$, considerando una ventana histórica de tamaño $L = 5$ pasos de retraso). En esta etapa se evalúa la capacidad de extrapolación del modelo ante cambios no observados previamente.
 
----
-
 ## Optimización de Hiperparámetros y Prevención del Sobreajuste
 
 Para mitigar el riesgo de sobreajuste y adaptarnos a las limitaciones físicas, se aplicaron las siguientes estrategias de regularización y restricciones estructurales:

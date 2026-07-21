@@ -29,8 +29,6 @@ Para evaluar si la inversión en la obtención de cartas de alta rareza influye 
 
 La Figura 6.1 muestra la comparación de la estructura compositiva de los mazos según la rareza de sus unidades. El gráfico de barras agrupadas ilustra que los mazos victoriosos contienen en promedio 2.45 cartas comunes, 2.02 especiales, 1.93 épicas y 1.60 legendarias, valores prácticamente idénticos a los observados en las barajas derrotadas (2.46 comunes, 2.01 especiales, 1.93 épicas y 1.60 legendarias). Esta simetría empírica demuestra que la presencia de cartas de alta rareza no constituye una ventaja injusta por sí sola, validando el balance competitivo del diseño de juego.
 
----
-
 ## Análisis de Sinergias (Combos de Cartas con Mayor Éxito)
 
 El metajuego micro de Clash Royale se rige por la complementariedad táctica de parejas de cartas. Al rastrear e identificar las combinaciones más frecuentes con un mínimo de 150 apariciones dentro del dataset, se hallaron las siguientes sinergias con los mayores índices de victoria:
@@ -58,8 +56,6 @@ El metajuego micro de Clash Royale se rige por la complementariedad táctica de 
 *Nota.* Elaboración propia basada en la minería de patrones de combinación de cartas (2023-2026).
 
 La Figura 6.2 ilustra la efectividad de las principales parejas de cartas en el dataset. Sobresale la combinación *Baby Dragon + Hunter* con un 68.90% de victorias. Esta cifra excepcional representa una sinergia defensiva óptima: el *Baby Dragon* aporta daño de salpicadura aéreo para limpiar tropas en grupo, mientras que el *Cazador (Hunter)* provee daño masivo a corta distancia contra unidades de alta vida. Asimismo, combos clásicos como *Golem + Night Witch* (54.21%) y *Pekka + Electro Wizard* (56.67%) confirman que la complementariedad de roles en el mazo es un factor decisivo.
-
----
 
 ## Importancia de las Características en la Predicción de Victoria
 
@@ -93,8 +89,6 @@ Para determinar la relevancia de cada métrica del dataset, se entrenó un clasi
 *Nota.* Modelo Random Forest clasificador de 100 estimadores (Elaboración propia).
 
 La Figura 6.3 ordena jerárquicamente las variables según su contribución matemática al árbol de decisión. Se evidencia que la *Diferencia de Copas Iniciales* (18.99%) constituye la señal más influyente, al reflejar el nivel de habilidad y experiencia del jugador. Le siguen la *Diferencia de Elíxir Promedio* (15.36%) y la *Diferencia de Nivel de Cartas* (13.74%), lo que confirma que el control del flujo de elixir y la progresión física de las cartas superan significativamente a las variables de rareza individual.
-
----
 
 ## Prueba de Significancia Estadística de la Hipótesis
 

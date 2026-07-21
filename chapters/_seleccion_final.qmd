@@ -17,8 +17,6 @@ Para mapear las predicciones agregadas de arquetipos hacia cartas dominantes y s
 
 2. **Interpretabilidad de Atributos:** Permite descomponer la influencia de los niveles de cartas, las copas iniciales y la sinergia estructural del mazo.
 
----
-
 ### Módulos del Sistema:
 1. **Módulo de Ingesta y Clasificación:** Consume los registros de batallas del conjunto de datos histórico procesado. Extrae las variables temporales, numéricas y categóricas. Utiliza diccionarios indexados en memoria RAM para asociar las IDs de cartas con condiciones de victoria en tiempo constante $O(1)$.
 2. **Módulo de Series Temporales (LSTM):** Recibe las series temporales de uso y efectividad agregadas en ventanas de 1,000 batallas. Utiliza la red LSTM entrenada para proyectar las tasas de uso futuras ante la inercia de la temporada actual.

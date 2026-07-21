@@ -5,13 +5,9 @@ Se describe el proceso de implementación del sistema software que integra los m
 > [!IMPORTANT]
 > En la etapa de creación y desarrollo de los aplicativos se agregan e integran **nuevos conceptos y soluciones tecnológicas que no fueron abarcadas originalmente en el Marco Teórico (Capítulo 2)**. Estas adiciones (tales como la arquitectura de tres capas, controladores REST, serialización ONNX y micro-simulaciones estocásticas) resultan esenciales para trasladar el conocimiento teórico hacia un sistema software interactivo en tiempo real.
 
----
-
 ## Metodología de Desarrollo
 
 El desarrollo del aplicativo se realizó bajo la metodología **Scrum** con ciclos iterativos de dos semanas (*sprints*). Se definieron historias de usuario priorizadas por valor académico, permitiendo integrar progresivamente los componentes de inteligencia artificial con la interfaz de usuario. La validación continua se realizó mediante pruebas de integración y revisión con los directores de investigación.
-
----
 
 ## Arquitectura del Sistema
 
@@ -145,8 +141,6 @@ browser --> user : Renderizar gráfica\ncomparativa
 
 La Figura 9.3 muestra la interacción multimodelo durante la simulación de parches. Se acopla la proyección secuencial de la LSTM con el muestreo estocástico de Monte Carlo, permitiendo prever la estabilidad y variabilidad de los arquetipos en la siguiente temporada competitiva.
 
----
-
 ## Justificación de Tecnologías
 
 ### Frontend: React + TypeScript
@@ -160,8 +154,6 @@ Se eligió **React 19** por su ecosistema de componentes, su modelo de virtual D
 ### Despliegue: Vercel
 
 **Vercel** se eligió por su integración con React y soporte para funciones serverless, lo que elimina la necesidad de gestionar infraestructura de servidores. El archivo `vercel.json` configura reescrituras de rutas para dirigir las peticiones API hacia la función serverless correspondiente.
-
----
 
 ## Pipeline de Entrenamiento y Exportación de Modelos
 
@@ -196,8 +188,6 @@ node -> browser : API REST\npredicciones
 
 La Figura 9.4 ilustra el pipeline de conversión. Los modelos se entrenan en Python, se convierten a grafos serializados `.onnx` mediante `torch.onnx.export` y `onnxmltools`, y finalmente son cargados en memoria por Node.js al arrancar el servidor REST.
 
----
-
 ## Estructura y Módulos del Aplicativo
 
 ### Componentes de la Interfaz (Frontend)
@@ -231,8 +221,6 @@ La Figura 9.4 ilustra el pipeline de conversión. Los modelos se entrenan en Pyt
 
 *Nota.* Especificación técnica de la API REST MetaPredict (Elaboración propia).
 
----
-
 ## Métricas de Rendimiento
 
 Se evaluó el rendimiento del sistema en un entorno de pruebas con las siguientes especificaciones: Intel Core i5-12400, 16 GB RAM, Node.js v20.
@@ -252,8 +240,6 @@ Se evaluó el rendimiento del sistema en un entorno de pruebas con las siguiente
 *Nota.* Pruebas de rendimiento ejecutadas localmente en entorno de laboratorio (Elaboración propia).
 
 El tiempo de respuesta total para la predicción de un mazo es de aproximadamente **65 milisegundos**, lo que permite una experiencia interactiva en tiempo real para el usuario.
-
----
 
 ## Despliegue y Escalabilidad
 

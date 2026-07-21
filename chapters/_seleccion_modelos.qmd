@@ -46,8 +46,6 @@ Para predecir las series temporales de uso y win rates de los arquetipos de Clas
 * **Costo Computacional:** Bajo.
 * **Interpretabilidad:** Alta.
 
----
-
 ## Tecnologías e Innovaciones Incorporadas en la Creación del Aplicativo
 
 Como se explicó antes, la transición del modelado teórico hacia un aplicativo software operativo requirió la introducción de conceptos computacionales y arquitecturas avanzadas. Las tecnologías clave son:

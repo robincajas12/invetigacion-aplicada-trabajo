@@ -19,8 +19,6 @@ El conjunto de datos de entrenamiento definitivo consta de un total de **50,000*
 * **Métricas de Gestión de Recursos:** Costos de elíxir promedio individuales (`winner.elixir.average` y `loser.elixir.average`).
 * **Métricas de Fuerza Relativa:** Nivel acumulado de las cartas de la baraja (`winner.totalcard.level` y `loser.totalcard.level`).
 
----
-
 ## Resultados del Análisis Global y Meso
 
 Al procesar la totalidad del conjunto de datos e investigar las estadísticas descriptivas consolidadas, se obtienen las siguientes distribuciones y correlaciones:
