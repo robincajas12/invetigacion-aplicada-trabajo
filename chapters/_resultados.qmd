@@ -34,6 +34,8 @@ Al comparar las medias generales de los parámetros numéricos de los mazos de l
 | **Costo de Elíxir Promedio** | 3.838 | 3.866 | -0.028 |
 | **Nivel Acumulado de Cartas** | 95.42 | 94.19 | +1.23 |
 
+*Fuente:* Elaboración propia basada en el procesamiento de 50,000 partidas del conjunto de datos histórico (2023-2026).
+
 Este resultado indica que, mientras que el costo neto de elíxir de la baraja no influye significativamente en la victoria (con una diferencia residual de apenas 0.028 de elíxir), el nivel total de las cartas sí presenta una correlación positiva fuerte con el resultado favorable de la batalla.
 
 ### Distribución de Popularidad y Desempeño por Arquetipo (Meso)
@@ -46,13 +48,17 @@ Este resultado indica que, mientras que el costo neto de elíxir de la baraja no
 | Asedio | 3.2 | 53.1 |
 | Otros | 11.8 | 49.1 |
 
-![Distribución de popularidad y rendimiento por arquetipo](chapters/images/arquetipos_rendimiento.png)
-**Figura 2.1:** Comparativa de la tasa de uso frente al porcentaje de victorias por arquetipo.
+*Fuente:* Elaboración propia a partir de datos agregados en ventanas temporales del conjunto de datos (2023-2026).
 
-La Figura 2.1 ilustra la distribución de popularidad y rendimiento observada en los datos:
+![Distribución de popularidad y rendimiento por arquetipo](chapters/images/arquetipos_rendimiento.png){#fig-arquetipos-rendimiento fig-align="center" width=75%}
 
-1. **Dominio del Ciclo Rápido:** Más de una tercera parte de los jugadores opta por mazos con rotaciones veloces (Hog Rider, Goblin Barrel, etc.).
+**Figura 5.1:** Distribución de la popularidad (Tasa de Uso %) frente al rendimiento promedio (Win Rate %) por arquetipo competitivo en Clash Royale.  
+*Fuente:* Elaboración propia a partir del análisis empírico del conjunto de datos (2023-2026).
 
-2. **Efecto Especialista de Asedio:** Los mazos de Asedio, a pesar de registrar una bajísima tasa de popularidad (3.2%), demuestran la tasa de victorias media más alta de todo el ecosistema competitivo (53.12%), lo que indica que se trata de un arquetipo jugado de forma exclusiva y exitosa por expertos.
+La Figura 5.1 representa visualmente la relación entre la frecuencia con la que la comunidad adopta una estrategia específica (eje de uso) y su efectividad porcentual en victorias (eje de win rate). De la observación detallada de este gráfico se extraen las siguientes explicaciones clave:
 
-3. **Equilibrio de Win Rate:** Todos los arquetipos principales muestran tasas de victorias en una banda muy estrecha entre el 49% y 53%, validando estadísticamente el balance general provisto por el diseño de Clash Royale.
+1. **Dominio del Ciclo Rápido (34.5% Uso, 50.2% Win Rate):** Más de un tercio del metajuego total está dominado por arquetipos de rotación veloz (tales como *Hog Cycle 2.6* o *Logbait*). Esta alta frecuencia de uso responde a la versatilidad de defender con bajo costo y presionar constantemente, manteniendo una tasa de victorias cercana al 50%.
+
+2. **Efecto de Alta Especialización en Asedio (3.2% Uso, 53.1% Win Rate):** Los mazos de Asedio (basados en Ballesta y Mortero) registran la menor adopción en el ecosistema (apenas 3.2%). Sin embargo, alcanzan la tasa de victorias más elevada (53.1%). Esto representa el fenómeno de *jugadores especialistas*: únicamente usuarios con alto dominio técnico eligen este arquetipo, logrando superar el promedio general de victorias.
+
+3. **Homogeneidad del Balance General (Banda 49%-53%):** La proximidad de todas las tasas de victoria a la línea neutra del 50% demuestra la efectividad de las mecánicas de balance diseñadas por Supercell, garantizando que ningún arquetipo sea invencible y que la habilidad individual sea el factor diferenciador.
