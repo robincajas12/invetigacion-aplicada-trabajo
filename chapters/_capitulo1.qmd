@@ -52,7 +52,7 @@ El análisis se organiza alrededor de cinco conceptos:
 | Tasa de uso | Frecuencia relativa con la que aparece una carta, mazo o arquetipo |
 | Tasa de victoria | Porcentaje de victorias obtenido por una carta, mazo o arquetipo |
 
-*Nota.* Elaboración propia basada en las mecánicas de juego de Supercell (2023-2026).
+*Nota.* Definiciones basadas en la terminología estándar de la comunidad competitiva de Clash Royale [@clashroyalearchetypes].
 
 ## Arquetipos considerados
 
@@ -71,7 +71,7 @@ Para reducir la complejidad combinatoria, los mazos se agrupan en arquetipos:
 | Control lento | Mazos defensivos que buscan contraataques de alto valor |
 | Híbridos | Mazos que combinan varias condiciones de victoria o no encajan en una sola categoría |
 
-*Nota.* Clasificación y elaboración propia basada en el procesamiento del conjunto de datos histórico de partidas de Clash Royale (2023-2026).
+*Nota.* Clasificación basada en los arquetipos reconocidos por la comunidad competitiva de Clash Royale [@clashroyalearchetypes].
 
 Esta clasificación permite transformar millones de combinaciones posibles en grupos interpretables para el análisis predictivo.
 
